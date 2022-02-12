@@ -285,11 +285,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>stok_barang" aria-expanded="false">
                             <i class="ti ti-devices" style="font-size: 22px; margin-right: 8px;"></i>
-                            <span class="menu-title">Stok Barang</span>
+                            <span class="menu-title">Data Barang</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>pinjambarang" aria-expanded="false">
+                        <a class="nav-link" href="<?php echo base_url(); ?>pinjam_barang" aria-expanded="false">
                             <i class="ti ti-file-symlink" style="font-size: 22px; margin-right: 8px;"></i>
                             <span class="menu-title">Peminjaman Barang</span>
                         </a>
@@ -307,7 +307,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>pinjamkendaraan" aria-expanded="false">
+                        <a class="nav-link" href="<?php echo base_url(); ?>" aria-expanded="false">
                             <i class="ti ti-car" style="font-size: 23px; margin-right: 8px;"></i>
                             <span class="menu-title">Peminjaman Kendaraan</span>
                         </a>

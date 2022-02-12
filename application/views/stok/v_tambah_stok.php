@@ -4,7 +4,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold">Tambah Stok Barang</h3><br>
+                        <h3 class="m-0 font-weight-bold">Tambah Data Barang</h3><br>
                         <div class="col-md-12 grid-margin">
                             <div class="card shadow mb-12">
                                 <div class="col-lg-12 grid-margin stretch-card">

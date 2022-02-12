@@ -4,9 +4,9 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold">Data Stok Barang</h3><br>
+                        <h3 class="m-0 font-weight-bold">Data Barang</h3><br>
                         <div class="col-md-4 grid-margin">
-                            <a href="<?php echo base_url() ?>stok_barang/tambah" class="btn btn-success btn-md"><i class="ti ti-plus">&nbsp;</i>Tambah Stok Barang</a>
+                            <a href="<?php echo base_url() ?>stok_barang/tambah" class="btn btn-success btn-md"><i class="ti ti-plus">&nbsp;</i>Tambah Data Barang</a>
                         </div>
                         <div class="col-md-12 grid-margin">
                             <div class="card mb-12">
@@ -22,8 +22,8 @@
                                                         <th>Gambar</th>
                                                         <th>Nama Barang</th>
                                                         <th>Jenis Barang</th>
-                                                        <th>Satuan Barang</th>
                                                         <th>Jumlah Barang</th>
+                                                        <th>Satuan Barang</th>
                                                         <th>Kondisi Barang</th>
                                                         <th>Keterangan</th>
                                                         <th>Aksi</th>
@@ -41,14 +41,15 @@
                                                                 <img class="zoomable img-lg" src="<?php echo base_url() . 'assets/images/upload/' . $dp->gambar ?>">
                                                             <td><?php echo $dp->nama_barang ?></td>
                                                             <td><?php echo $dp->jenis_barang ?></td>
-                                                            <td><?php echo $dp->satuan_barang ?></td>
                                                             <td><?php echo $dp->jumlah_barang ?></td>
+                                                            <td><?php echo $dp->satuan_barang ?></td>
                                                             <td><?php echo $dp->kondisi_barang ?></td>
                                                             <td><?php echo $dp->keterangan ?></td>
                                                             <td>
-                                                                <!-- <a class="btn btn-sm btn-info" href="<?php echo base_url('data_stok/detail/' . $dp->id) ?>"><i class="ti ti-info-circle"></i></a> -->
-                                                                <a style="height:23px" type="button" class="btn btn btn-success" href="<?php echo base_url('stok_barang/edit/' . $dp->id_barang) ?>"><i class="ti ti-pencil"></i></a>
-                                                                <a style="height:23px" onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="ti ti-trash"></i></a>
+                                                                <!-- <a class="btn btn-sm btn-info" href="<?php echo base_url('data_stok/detail/' . $dp->id_barang) ?>"><i class="ti ti-info-circle"></i></a> -->
+                                                                <a style="font-size:25px" class="btn btn-md btn-success" href="<?php echo base_url() ?>stok_barang/edit?id_barang=<?php echo $dp->id_barang ?>"><i class="ti ti-pencil"></i></a>
+                                                                <!-- <a style="height:23px" type="button" class="btn btn btn-success" href="<?php echo base_url('stok_barang/edit/'.$dp->id_barang)?> "?><i class="ti ti-pencil"></i></a> -->
+                                                                <a style="font-size:25px" onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="ti ti-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

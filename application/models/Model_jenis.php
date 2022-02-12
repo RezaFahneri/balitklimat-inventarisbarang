@@ -18,4 +18,7 @@ class Model_jenis extends CI_model
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+	function getList(){
+		return $query = $this->db->order_by('id_jenis', 'ASC')->get('jenis_barang')->result();
+	}
 }

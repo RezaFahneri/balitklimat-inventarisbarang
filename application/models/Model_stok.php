@@ -47,10 +47,7 @@ class Model_stok extends CI_model
 
 	function update_data($id, $dokumen)
 	{
-		// $this->db->where($where);
-
 		$data = array(
-			'id_barang'               => $this->input->post('id_barang'),
 			'kode'               => $this->input->post('kode'),
 			'gambar'                  => $dokumen['file_name'],
 			'nama_barang'               => $this->input->post('nama_barang'),
@@ -62,6 +59,7 @@ class Model_stok extends CI_model
 		);
 
 		$this->db->where('id_barang', $id)->update('stok_barang', $data);
+
 		if ($this->db->affected_rows() > 0) {
 			return true;
 		} else {
@@ -69,18 +67,10 @@ class Model_stok extends CI_model
 		}
 	}
 
-	public function getDetail($id){
-		return $this->db->where('id_barang', $id)->get('stok_barang')->row();
-	}
-
-	public function getList()
+	public function getDetail($id)
 	{
-		$this->db->select('*');
-		$this->db->from('stok_barang');
-		// $this->db->join('proyek', 'proyek.ID_PROGRAM = program.ID_PROGRAM');
-		// $this->db->join('monitoring', 'proyek.ID_PROYEK = monitoring.ID_PROYEK');
-		return $this->db->get()->result();
-		// return $this->db->order_by('NO_MONITORING', 'ASC')->get('monitoring')->result();
+		return $this->db->where('id_barang', $id)->get('stok_barang')->row();
+		// return $this->db->query("SELECT * FROM stok_barang WHERE id_barang='$id'")->result();
 	}
 
 	function hapus_data($where, $table)
