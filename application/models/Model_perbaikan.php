@@ -1,5 +1,5 @@
 <?php
-class Model_pinjam extends CI_model
+class Model_perbaikan extends CI_model
 {
 	function tampil_data($table)
 	{
@@ -15,8 +15,8 @@ class Model_pinjam extends CI_model
 	{
 		//return $query = $this->db->order_by('id_proyek', 'ASC')->get('proyek')->result();
 		$this->db->select('*');
-		$this->db->from('pinjam_barang');
-		$this->db->join('stok_barang', 'stok_barang.id_barang = pinjam_barang.id_barang');
+		$this->db->from('perbaikan_barang');
+		$this->db->join('stok_barang', 'stok_barang.id_barang = perbaikan_barang.id_barang');
 		return $this->db->get()->result();
 	}
 

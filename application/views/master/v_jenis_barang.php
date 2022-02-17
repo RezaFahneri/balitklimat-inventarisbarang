@@ -5,6 +5,7 @@
                 <div class="shadow">
                     <div class="card-header py-3">
                         <h3 class="m-0 font-weight-bold">Data Jenis Barang</h3><br>
+                        <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses');?>"></div>
                         <div class="col-md-4 grid-margin">
                             <a href="<?php echo base_url() ?>Jenis_barang/tambah" class="btn btn-success"><i class="ti ti-plus">&nbsp;</i>Tambah Jenis Barang</a>
                         </div>
@@ -14,7 +15,7 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4 ">
-                                            <table class="table" cellspacing="0" width="100%">
+                                            <table class="table table-bordered" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -32,7 +33,7 @@
                                                             <td><?php echo $j->jenis_barang ?></td>
                                                             <td>
                                                                 <a class="btn btn-sm btn-success" href="<?php echo base_url('/jenis_barang/edit/' . $j->id_jenis) ?>"><i class="ti ti-pencil"></i></a>
-                                                                <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo site_url('/jenis_barang/hapus/' . $j->id_jenis) ?>"><i class="ti ti-trash"></i></a>
+                                                                <a class="btn btn-sm btn-danger" id="tombol-hapus2" href="<?php echo site_url('/jenis_barang/hapus/' . $j->id_jenis) ?>"><i class="ti ti-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

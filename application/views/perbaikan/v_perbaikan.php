@@ -4,10 +4,10 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold">Peminjaman Barang</h3><br>
+                        <h3 class="m-0 font-weight-bold">Perbaikan Barang</h3><br>
                         <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                         <div class="col-md-4 grid-margin">
-                            <a href="<?php echo base_url() ?>pinjam_barang/pinjam" class="btn btn-success btn-md">Pinjam Barang</a>
+                            <a href="<?php echo base_url() ?>perbaikan_barang/tambah" class="btn btn-success btn-md">Tambah Perbaikan Barang</a>
                         </div>
                         <div class="col-md-12 grid-margin">
                             <div class="card mb-12">
@@ -20,38 +20,32 @@
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Nama Barang</th>
-                                                        <th>Peminjam</th>
-                                                        <th>Tanggal Pinjam</th>
+                                                        <th>Jenis Kerusakan</th>
+                                                        <th>Tempat Perbaikan</th>
+                                                        <th>Tanggal Diperbaiki</th>
                                                         <th>Tanggal Selesai</th>
                                                         <th>Jumlah</th>
-                                                        <th>Kegiatan</th>
-                                                        <th>Lokasi</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
                                                     $no = 1;
-                                                    foreach ($data_pinjam as $dp) {
+                                                    foreach ($data_perbaikan as $dp) {
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $no++ ?></td>
                                                             <td><?php echo $dp->nama_barang ?></td>
-                                                            <td><?php echo $dp->peminjam ?></td>
-                                                            <td><?php echo $dp->tglpinjam ?></td>
+                                                            <td><?php echo $dp->jenis ?></td>
+                                                            <td><?php echo $dp->tempat ?></td>
+                                                            <td><?php echo $dp->tglperbaikan ?></td>
                                                             <td><?php echo $dp->tglselesai ?></td>
                                                             <td><?php echo $dp->qty ?></td>
-                                                            <td><?php echo $dp->kegiatan ?></td>
-                                                            <td><?php echo $dp->lokasi ?></td>
                                                             <?php if ($dp->status == '1') { ?>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-outline-warning btn-lg" style="height:40px;">Menunggu Verifikasi</button>
-                                                                </td>
-                                                            <?php } else { ?>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-lg" style="height:40px;" disabled>Dipinjam</button>
-                                                                    <hr style="width:50%;text-align:left;margin-left:0">
-                                                                    <button type="button" class="btn btn-outline-info btn-lg" style="height:40px;">Selesai</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-lg" style="height:40px;" disabled>Diperbaiki</button>
+                                                                <hr style="width:50%;text-align:left;margin-left:0">
+                                                                <button type="button" class="btn btn-outline-info btn-lg" style="height:40px;">Selesai</button>
                                                                 </td>
                                                             <?php } ?>
                                                         </tr>

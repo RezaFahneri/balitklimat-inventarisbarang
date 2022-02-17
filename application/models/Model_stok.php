@@ -6,6 +6,21 @@ class Model_stok extends CI_model
 		return $this->db->get($table);
 	}
 
+	function tampil_datapinjam($batas = 0)
+	{
+		return $query = $this->db->get_where('stok_barang', array('jumlah_barang >' => $batas))->result();
+	}
+
+	function tampil_dataperbaikan($batas = 0)
+	{
+		return $query = $this->db->get_where('stok_barang', array('jumlah_barang >' => $batas))->result();
+	}
+	// public function getListPPK()
+	// {
+	// 	return $query = $this->db->where('pumk', 'Iya')->order_by('nip', 'ASC')->get('data_pegawai')->result();
+	// }
+
+
 	function input_data($dokumen)
 	{
 		$data = array(

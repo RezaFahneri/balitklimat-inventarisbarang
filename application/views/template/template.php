@@ -22,6 +22,14 @@
     <link rel="shortcut icon" href="<?= base_url('assets'); ?>/images/logo/kementan.png" />
     <!-- icon -->
     <link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/sweetalert2/sweetalert2.min.css">
+    <style>
+        .swal2-popup {
+            font-size: 1.0rem !important;
+            height: 80%;
+        }
+    </style>
 </head>
 
 <body>
@@ -262,7 +270,7 @@
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
+                <ul class="nav" style="padding-right: -10px;">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
                             <i class="ti ti-home-2" style="font-size: 22px; margin-right: 8px;"></i>
@@ -273,7 +281,7 @@
                         <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
                             <i class="ti ti-clipboard-list" style="font-size: 22px; margin-right: 8px;"></i>
                             <span class="menu-title">Data Master</span>
-                            <i class="menu-arrow"></i>
+                            <i class="menu-arrow" style="margin-left: 40%;"></i>
                         </a>
                         <div class="collapse" id="master">
                             <ul class="nav flex-column sub-menu">
@@ -289,19 +297,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>pinjam_barang" aria-expanded="false">
+                        <a class="nav-link" data-toggle="collapse" href="#data" aria-expanded="false" aria-controls="master">
                             <i class="ti ti-file-symlink" style="font-size: 22px; margin-right: 8px;"></i>
-                            <span class="menu-title">Peminjaman Barang</span>
+                            <span class="menu-title">Data Peminjaman</span>
+                            <i class="menu-arrow" style="margin-left: 17%;"></i>
                         </a>
+                        <div class="collapse" id="data">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>pinjam_barang">Peminjaman Barang</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>">Riwayat Peminjaman</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>pengembalianbarang" aria-expanded="false">
-                            <i class="ti ti-file-export" style="font-size: 22px; margin-right: 8px;"></i>
-                            <span class="menu-title">Pengembalian Barang</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>perbaikan" aria-expanded="false">
+                        <a class="nav-link" href="<?php echo base_url(); ?>perbaikan_barang" aria-expanded="false">
                             <i class="ti ti-tool" style="font-size: 22px; margin-right: 9px;"></i>
                             <span class="menu-title">Perbaikan Barang</span>
                         </a>

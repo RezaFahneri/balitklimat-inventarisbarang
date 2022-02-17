@@ -30,6 +30,7 @@ class Jenis_barang extends CI_Controller {
             'jenis_barang' =>$jenis_barang,
         );
         $this->Model_jenis->input_data($data, 'jenis_barang');
+        $this->session->set_flashdata('sukses', 'Data jenis barang berhasil ditambah');
         redirect('jenis_barang');
     }
     function edit($id)
@@ -54,12 +55,14 @@ class Jenis_barang extends CI_Controller {
         );
         $this->load->Model('Model_jenis');
         $this->Model_jenis->update_data($where, $data, 'jenis_barang');
+        $this->session->set_flashdata('sukses', 'Data jenis barang berhasil diperbarui');
         redirect('jenis_barang');
     }
     function hapus($id)
 	{
 		$where = array('id_jenis' => $id);
 		$this->Model_jenis->hapus_data($where, 'jenis_barang');
+        $this->session->set_flashdata('sukses', 'Data jenis barang berhasil dihapus');
 		redirect('jenis_barang');
 	}
 }

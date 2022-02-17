@@ -60,7 +60,7 @@
                             <div class="card card-light-danger">
                                 <div class="card-body">
                                     <p class="mb-4 font-weight-bold">Total Barang Yang dipinjam</p>
-                                    <p class="fs-30 mb-2">-</p>
+                                    <p class="fs-30 mb-2"><?= $barang_pinjam; ?></p>
                                 </div>
                             </div>
                         </div>

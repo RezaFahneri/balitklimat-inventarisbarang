@@ -30,6 +30,7 @@ class Satuan_barang extends CI_Controller {
             'satuan_barang' =>$satuan_barang,
         );
         $this->Model_satuan->input_data($data, 'satuan_barang');
+        $this->session->set_flashdata('sukses', 'Data satuan barang berhasil ditambah');
         redirect('satuan_barang');
     }
     function edit($id)
@@ -54,12 +55,14 @@ class Satuan_barang extends CI_Controller {
         );
         $this->load->Model('Model_satuan');
         $this->Model_satuan->update_data($where, $data, 'satuan_barang');
+        $this->session->set_flashdata('sukses', 'Data satuan barang berhasil diperbarui');
         redirect('satuan_barang');
     }
     function hapus($id)
 	{
 		$where = array('id_satuan' => $id);
 		$this->Model_satuan->hapus_data($where, 'satuan_barang');
+        $this->session->set_flashdata('sukses', 'Data satuan barang berhasil dihapus');
 		redirect('satuan_barang');
 	}
 }

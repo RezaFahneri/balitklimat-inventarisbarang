@@ -5,6 +5,7 @@
                 <div class="shadow">
                     <div class="card-header py-3">
                         <h3 class="m-0 font-weight-bold">Data Barang</h3><br>
+                        <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                         <div class="col-md-4 grid-margin">
                             <a href="<?php echo base_url() ?>stok_barang/tambah" class="btn btn-success btn-md"><i class="ti ti-plus">&nbsp;</i>Tambah Data Barang</a>
                         </div>
@@ -14,7 +15,7 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4 ">
-                                            <table id="dt-multi-checkbox" class="table" cellspacing="0" width="100%">
+                                            <table id="dtBasicExample" class="table table-bordered" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -25,7 +26,7 @@
                                                         <th>Jumlah Barang</th>
                                                         <th>Satuan Barang</th>
                                                         <th>Kondisi Barang</th>
-                                                        <th>Keterangan</th>
+                                                        <!-- <th>Keterangan</th> -->
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -44,12 +45,12 @@
                                                             <td><?php echo $dp->jumlah_barang ?></td>
                                                             <td><?php echo $dp->satuan_barang ?></td>
                                                             <td><?php echo $dp->kondisi_barang ?></td>
-                                                            <td><?php echo $dp->keterangan ?></td>
+                                                            <!-- <td><?php echo $dp->keterangan ?></td> -->
                                                             <td>
                                                                 <!-- <a class="btn btn-sm btn-info" href="<?php echo base_url('data_stok/detail/' . $dp->id_barang) ?>"><i class="ti ti-info-circle"></i></a> -->
                                                                 <a style="font-size:25px" class="btn btn-md btn-success" href="<?php echo base_url() ?>stok_barang/edit?id_barang=<?php echo $dp->id_barang ?>"><i class="ti ti-pencil"></i></a>
-                                                                <!-- <a style="height:23px" type="button" class="btn btn btn-success" href="<?php echo base_url('stok_barang/edit/'.$dp->id_barang)?> "?><i class="ti ti-pencil"></i></a> -->
-                                                                <a style="font-size:25px" onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="ti ti-trash"></i></a>
+                                                                <!-- <a style="height:23px" type="button" class="btn btn btn-success" href="<?php echo base_url('stok_barang/edit/' . $dp->id_barang) ?> "?><i class="ti ti-pencil"></i></a> -->
+                                                                <a style="font-size:25px" id="tombol-hapus3" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="ti ti-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

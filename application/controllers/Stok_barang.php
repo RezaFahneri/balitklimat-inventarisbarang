@@ -55,18 +55,19 @@ class Stok_barang extends CI_Controller
 
                 if ($this->upload->do_upload('gambar')) {
                     if ($this->Model_stok->input_data($this->upload->data()) == true) {
-                        // $this->session->set_flashdata('announce', 'Berhasil menyimpan data');
+                        $this->session->set_flashdata('sukses', 'Data barang berhasil ditambah');
                         redirect('stok_barang');
                     } else {
-                        // $this->session->set_flashdata('announce', 'Gagal menyimpan data');
+                        $this->session->set_flashdata('gagal', 'Gagal menyimpan data');
                         redirect('stok_barang/tambah');
                     }
                 } else {
-                    // $this->session->set_flashdata('announce', $this->upload->display_errors());
-                    redirect('stok_barang/tambah');
+                    $this->Model_stok->input_data('stok_barang');
+                    $this->session->set_flashdata('sukses',  'tanpa gambar');
+                    redirect('stok_barang');
                 }
             } else {
-                //  $this->session->set_flashdata('announce', validation_errors());
+                $this->session->set_flashdata('gagal',  validation_errors());
                 redirect('stok_barang/tambah');
             }
         }
@@ -85,10 +86,8 @@ class Stok_barang extends CI_Controller
 		// 	// $data['primary_view'] = '404_view';
 		// }
         $data['jenis'] = $this->Model_jenis->getList();
-        $data['jenis1'] = $this->Model_jenis->getList();
 
         $data['satuan'] = $this->Model_satuan->getList();
-        $data['satuan1'] = $this->Model_satuan->getList();
 
         $data['edit'] = $this->Model_stok->getDetail($id);
         $data['title'] = 'Edit Stok Barang | Balitklimat';
@@ -123,22 +122,22 @@ class Stok_barang extends CI_Controller
 
                 if ($this->upload->do_upload('gambar') == true) {
                     if ($this->Model_stok->update_data($this->input->post('id_barang'), $this->upload->data()) == true) {
-                        // $this->session->set_flashdata('announce', 'Berhasil menyimpan data');
+                        $this->session->set_flashdata('sukses', 'Data barang berhasil diperbarui');
                         redirect('stok_barang');
                     } else {
-                        // $this->session->set_flashdata('announce', 'Gagal menyimpan data');
+                        $this->session->set_flashdata('gagal', 'Gagal menyimpan data');
                         redirect('stok_barang/edit?id_barang=' . $this->input->post('id_barang'));
                     }
                 } else {
-                    // $this->session->set_flashdata('announce', $this->upload->display_errors());
+                    $this->session->set_flashdata('gagal', 'Silahkan upload gambar');
                     redirect('stok_barang/edit?id_barang=' . $this->input->post('id_barang'));
                 }
             } else {
-                // $this->session->set_flashdata('announce', validation_errors());
+                $this->session->set_flashdata('gagal', validation_errors());
                 redirect('stok_barang/edit?id_barang=' . $this->input->post('id_barang'));
             }
         } else {
-            // $this->session->set_flashdata('announce', validation_errors());
+            $this->session->set_flashdata('gagal', validation_errors());
             redirect('stok_barang/edit?id_barang=' . $this->input->post('id_barang'));
         }
     }
@@ -179,17 +178,7 @@ class Stok_barang extends CI_Controller
     {
         $where = array('id_barang' => $id);
         $this->Model_stok->hapus_data($where, 'stok_barang');
+        $this->session->set_flashdata('sukses', 'Data barang berhasil dihapus');
         redirect('stok_barang');
     }
-    // public function _rules()
-    // {
-    //     $this->form_validation->set_rules('kode', 'kode', 'required');
-    //     $this->form_validation->set_rules('gambar', 'gambar');
-    //     $this->form_validation->set_rules('nama_barang', 'nama_barang', 'required');
-    //     $this->form_validation->set_rules('jenis_barang', 'jenis_barang', 'required');
-    //     $this->form_validation->set_rules('satuan_barang', 'satuan_barang');
-    //     $this->form_validation->set_rules('jumlah_barang', 'jumlah_barang', 'required');
-    //     $this->form_validation->set_rules('kondisi_barang', 'kondisi_barang', 'required');
-    //     $this->form_validation->set_rules('keterangan', 'keterangan');
-    // }
 }

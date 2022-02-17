@@ -27,6 +27,7 @@ class Dashboard extends CI_Controller
 		$data['total_barang'] = $this->Model_dashboard->count('stok_barang');
 		$data['total_stok'] = $this->Model_dashboard->sum('stok_barang', 'jumlah_barang');
 		$data['peminjam'] = $this->Model_dashboard->count('pinjam_barang', 'peminjam');
+		$data['barang_pinjam'] = $this->Model_dashboard->sum('pinjam_barang', 'qty');
 		$this->load->view('template/template', $data);
 		$this->load->view('v_dashboard');
 		$this->load->view('template/footer', $data);

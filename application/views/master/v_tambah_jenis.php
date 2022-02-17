@@ -15,7 +15,7 @@
                                         <input type="text" name="jenis_barang" class="form-control" required>
                                         <?php echo form_error('jenis_barang', '<div class="text-small text-danger"></div>') ?>
                                     </div>
-                                    <button type="submit" class="btn btn-success"><a onclick="return confirm('Data Jenis Barang berhasil ditambahkan!')">Simpan</a></button>&nbsp &nbsp
+                                    <button type="submit" class="btn btn-success">Simpan</></button>&nbsp &nbsp
                                     <!-- <a class="btn btn-outline-dark" href="<?php echo base_url(); ?>akun">Cancel</a> -->
                                 </form>
                             </div>

@@ -5,6 +5,7 @@
                 <div class="shadow">
                     <div class="card-header py-3">
                         <h3 class="m-0 font-weight-bold">Edit Data Barang</h3><br>
+                        <div class="flash-data" id="flash5" data-flash="<?= $this->session->flashdata('gagal');?>"></div>
                         <div class="col-md-12 grid-margin">
                             <div class="card shadow mb-12">
                                 <div class="col-lg-12 grid-margin stretch-card">
@@ -13,18 +14,6 @@
                                             <div class="form-group">
                                                 <input type="hidden" name="id_barang" class="form-control" value="<?php echo $edit->id_barang ?>">
                                             </div>
-                                            <!-- <div class="form-group">
-                                                    <label><b>Pangkat</b></label></br>
-                                                    <?php $pangkat1 = $detail->pangkat ?>
-                                                    <select name="pangkat" id="pangkat" class="form-control" required>
-                                                        <option value="">--Pilih Pangkat--</option>
-                                                        <?php foreach ($pangkat as $row) : ?>
-                                                            <option <?php if ($pangkat1 == $row->pangkat) {
-                                                                        echo 'selected="selected"';
-                                                                    } ?> value="<?php echo $row->pangkat ?>"><?php echo $row->pangkat ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select> -->
-
                                             <div class="form-group">
                                                 <label>Gambar </label>
                                                 <input type="file" name="gambar" class="form-control">
@@ -79,11 +68,11 @@
                                                 </select>
                                                 <?php echo form_error('kondisi_barang', '<div class="text-small text-danger"></div>') ?>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Keterangan </label>
                                                 <input type="text" name="keterangan" class="form-control" value="<?php echo $edit->keterangan ?>">
                                                 <?php echo form_error('keterangan', '<div class="text-small text-danger"></div>') ?>
-                                            </div>
+                                            </div> -->
                                             <input type="submit" class="btn btn-success" name="submit" value="Simpan">&nbsp &nbsp
                                             <a class="btn btn-light" href="<?php echo base_url(); ?>stok_barang">Cancel</a>
                                         </form>

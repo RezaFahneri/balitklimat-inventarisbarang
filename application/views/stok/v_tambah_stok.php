@@ -5,6 +5,7 @@
                 <div class="shadow">
                     <div class="card-header py-3">
                         <h3 class="m-0 font-weight-bold">Tambah Data Barang</h3><br>
+                        <div class="flash-data" id="flash5" data-flash="<?= $this->session->flashdata('gagal');?>"></div>
                         <div class="col-md-12 grid-margin">
                             <div class="card shadow mb-12">
                                 <div class="col-lg-12 grid-margin stretch-card">
@@ -63,11 +64,11 @@
                                                 </select>
                                                 <?php echo form_error('kondisi_barang', '<div class="text-small text-danger"></div>') ?>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Keterangan </label>
                                                 <input type="text" name="keterangan" class="form-control">
                                                 <?php echo form_error('keterangan', '<div class="text-small text-danger"></div>') ?>
-                                            </div>
+                                            </div> -->
                                             <input type="submit" class="btn btn-success" name="submit" value="Simpan">&nbsp &nbsp
                                             <a class="btn btn-light" href="<?php echo base_url(); ?>stok_barang">Cancel</a>
                                         </form>

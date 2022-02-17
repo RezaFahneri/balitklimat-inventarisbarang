@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <title><?php echo $title ?></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/feather/feather.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
@@ -19,9 +19,10 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="<?= base_url('assets'); ?>/images/favicon.png" />
+    <link rel="shortcut icon" href="<?= base_url('assets'); ?>/images/logo/kementan.png" />
     <!-- icon -->
     <link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+
 </head>
 
 <body>
@@ -54,27 +55,24 @@
     <script src="js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
 
+    <!-- sweet alert 2 -->
+    <script src="<?= base_url('assets'); ?>/js/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url('assets'); ?>/js/myscript.js"></script>
+
+
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/addons/datatables.min.js"></script>
+
     <script>
-        // $(document).ready(function() {
-        //     $('#dtBasicExample').DataTable();
-        //     $('.dataTables_length').addClass('bs-select');
-        // });
-
         $(document).ready(function() {
-            $('#dt-multi-checkbox').dataTable({
-
-                columnDefs: [{
-                    orderable: false,
-                    className: 'select-checkbox',
-                    targets: 0
-                }],
-                select: {
-                    style: 'multi',
-                    selector: 'td:first-child'
-                }
-            });
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
         });
     </script>
+
+
+
+
 </body>
 
 </html>
