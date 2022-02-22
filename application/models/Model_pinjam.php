@@ -23,15 +23,11 @@ class Model_pinjam extends CI_model
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
-	// function input_data()
-	// {
-	// 	$this->db->insert('pinjam_barang');
-
-	// 	if ($this->db->affected_rows() > 0) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
+	
+	function update_data($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
 
 
 		

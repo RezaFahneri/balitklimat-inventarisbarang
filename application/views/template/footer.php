@@ -62,7 +62,6 @@
 
     <!-- MDBootstrap Datatables  -->
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/addons/datatables.min.js"></script>
-
     <script>
         $(document).ready(function() {
             $('#dtBasicExample').DataTable();
@@ -70,6 +69,17 @@
         });
     </script>
 
+    <!-- <script type="text/javascript" src="<?= base_url(); ?>assets//DataTables/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ]
+            });
+        });
+    </script> -->
 
 
 

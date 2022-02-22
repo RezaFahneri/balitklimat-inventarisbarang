@@ -15,7 +15,7 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4">
-                                            <table id="dtBasicExample" class="table table-bordered" cellspacing="0" width="100%">
+                                            <table class="table table-bordered" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -43,9 +43,13 @@
                                                             <td><?php echo $dp->qty ?></td>
                                                             <?php if ($dp->status == '1') { ?>
                                                                 <td>
-                                                                <button type="button" class="btn btn-outline-danger btn-lg" style="height:40px;" disabled>Diperbaiki</button>
-                                                                <hr style="width:50%;text-align:left;margin-left:0">
-                                                                <button type="button" class="btn btn-outline-info btn-lg" style="height:40px;">Selesai</button>
+                                                                    <button type="button" class="btn btn-outline-danger btn-md" style="height:40px;" disabled>Diperbaiki</button>
+                                                                    <hr style="width:100%;text-align:left;margin-left:0">
+                                                                    <a type="button" class="btn btn-outline-info btn-md" href="<?php echo base_url('perbaikan_barang/selesai/'.$dp->id_perbaikan).'/'.$dp->id_barang ?>">Selesai</a>
+                                                                </td>
+                                                            <?php } else { ?>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-outline-success btn-md" disabled>Selesai</button>
                                                                 </td>
                                                             <?php } ?>
                                                         </tr>

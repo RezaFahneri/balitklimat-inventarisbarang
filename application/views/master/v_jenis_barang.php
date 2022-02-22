@@ -18,7 +18,7 @@
                                             <table class="table table-bordered" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
-                                                        <th>No</th>
+                                                        <th width="10%">No</th>
                                                         <th>Jenis Barang</th>
                                                         <th>Aksi</th>
                                                     </tr>
@@ -32,8 +32,8 @@
                                                             <td><?php echo $no++ ?></td>
                                                             <td><?php echo $j->jenis_barang ?></td>
                                                             <td>
-                                                                <a class="btn btn-sm btn-success" href="<?php echo base_url('/jenis_barang/edit/' . $j->id_jenis) ?>"><i class="ti ti-pencil"></i></a>
-                                                                <a class="btn btn-sm btn-danger" id="tombol-hapus2" href="<?php echo site_url('/jenis_barang/hapus/' . $j->id_jenis) ?>"><i class="ti ti-trash"></i></a>
+                                                                <a class="btn btn-sm btn-success" href="<?php echo base_url('/jenis_barang/edit/' . $j->id_jenis) ?>"><i class="mdi mdi-pencil"></i></a>
+                                                                <a class="btn btn-sm btn-danger" id="tombol-hapus2" href="<?php echo site_url('/jenis_barang/hapus/' . $j->id_jenis) ?>"><i class="mdi mdi-delete"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Feb 2022 pada 10.53
+-- Waktu pembuatan: 18 Feb 2022 pada 07.22
 -- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.10
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -196,6 +196,30 @@ INSERT INTO `login` (`id`, `nama`, `foto`, `role`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `perbaikan_barang`
+--
+
+CREATE TABLE `perbaikan_barang` (
+  `id_perbaikan` int(11) NOT NULL,
+  `id_Barang` int(11) NOT NULL,
+  `jenis` varchar(50) NOT NULL,
+  `tempat` varchar(50) NOT NULL,
+  `tglperbaikan` date NOT NULL,
+  `tglselesai` date NOT NULL,
+  `qty` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `perbaikan_barang`
+--
+
+INSERT INTO `perbaikan_barang` (`id_perbaikan`, `id_Barang`, `jenis`, `tempat`, `tglperbaikan`, `tglselesai`, `qty`, `status`) VALUES
+(3, 50, 'Mati total', 'Gudang kamera', '2022-02-21', '2022-02-28', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pinjam_barang`
 --
 
@@ -216,8 +240,9 @@ CREATE TABLE `pinjam_barang` (
 --
 
 INSERT INTO `pinjam_barang` (`id_pinjam`, `id_barang`, `peminjam`, `tglpinjam`, `tglselesai`, `qty`, `kegiatan`, `lokasi`, `status`) VALUES
-(9, 1, 'reza', '2022-02-11', '2022-02-19', 1, 'PKL', 'Balai Penelitian Agroklimat dan Hidrologi ', '1'),
-(10, 5, 'azer', '2022-02-11', '2022-02-19', 2, 'PKL', 'Jakarta', '1');
+(14, 6, 'Robbi', '2022-02-12', '2022-02-16', 1, 'PKL', 'Bogor', '1'),
+(15, 5, 'Reza', '2022-02-12', '2022-02-14', 1, 'Gotong Royong', 'Balai Penelitian Agroklimat dan Hidrologi ', '2'),
+(28, 50, 'Fahneri', '2022-02-18', '2022-02-27', 1, 'Liburan', 'Padang', '1');
 
 -- --------------------------------------------------------
 
@@ -283,10 +308,10 @@ CREATE TABLE `stok_barang` (
 
 INSERT INTO `stok_barang` (`id_barang`, `kode`, `gambar`, `nama_barang`, `jenis_barang`, `satuan_barang`, `jumlah_barang`, `kondisi_barang`, `keterangan`) VALUES
 (1, '3.02.01.02.003', '5995b09be1fa2a4a337780ac013f37902.png', 'Mini Bus (Penumpang 14 Orang Kebawah)', 'Peralatan dan Mesin (132111)', 'Unit', 6, 'Baik', ''),
-(5, '3.02.01.03.002', 'pickup.jpg', 'Pick Up', 'Peralatan dan Mesin (132111)', 'Unit', 1, 'Baik', ''),
-(6, '3.02.01..04.001', 'motor.jpg', 'Sepeda Motor', 'Peralatan dan Mesin (132111)', 'Unit', 5, 'Baik', ''),
+(5, '3.02.01.03.002', 'pickup2.jpg', 'Pick Up', 'Peralatan dan Mesin (132111)', 'Unit', 0, 'Baik', ''),
+(6, '3.02.01..04.001', 'motor.jpg', 'Sepeda Motor', 'Peralatan dan Mesin (132111)', 'Unit', 4, 'Baik', ''),
 (7, '3.02.01.04.999', '', 'Kendaraan Bermotor Beroda Dua Lainnya', 'Peralatan dan Mesin (132111)', '', 1, 'Baik', ''),
-(8, '3.03.01.03.004', '', 'Solder  Listrik', 'Peralatan dan Mesin (132111)', 'Buah', 2, 'Baik', ''),
+(8, '3.03.01.03.004', 'solderlistrik3.jpg', 'Solder  Listrik', 'Peralatan dan Mesin (132111)', 'Buah', 2, 'Baik', ''),
 (9, '3.03.02.07.003', '', 'Bor', 'Peralatan dan Mesin (132111)', 'Buah', 6, 'Baik', ''),
 (10, '3.03.02.12.028', '', 'Mesin Bor Listrik Tangan', 'Peralatan dan Mesin (132111)', 'Buah', 1, 'Baik', ''),
 (11, '3.03.03.01.023', '', 'Volt Meter Elektronik', 'Peralatan dan Mesin (132111)', 'Buah', 1, 'Baik', ''),
@@ -302,7 +327,8 @@ INSERT INTO `stok_barang` (`id_barang`, `kode`, `gambar`, `nama_barang`, `jenis_
 (21, '3.05.01.04.001', '', 'Lemari Besi/Metal', 'Peralatan dan Mesin (132111)', 'Buah', 37, 'Baik', ''),
 (22, '3.05.01.04.002', '', 'Lemari Kayu', 'Peralatan dan Mesin (132111)', 'Buah', 24, 'Baik', ''),
 (23, '3.05.01.04.003', '', 'Rak Besi', 'Peralatan dan Mesin (132111)', 'Buah', 10, 'Baik', ''),
-(24, '3.05.01.04.004', '', 'Rak Kayu', 'Peralatan dan Mesin (132111)', 'Buah', 5, 'Baik', '');
+(24, '3.05.01.04.004', '', 'Rak Kayu', 'Peralatan dan Mesin (132111)', 'Buah', 5, 'Baik', ''),
+(50, '123', 'kamera1.jpg', 'Mirrorless', 'Peralatan dan Mesin (132111)', 'Unit', 0, 'Baik', NULL);
 
 --
 -- Indexes for dumped tables
@@ -349,6 +375,12 @@ ALTER TABLE `jenis_barang`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `perbaikan_barang`
+--
+ALTER TABLE `perbaikan_barang`
+  ADD PRIMARY KEY (`id_perbaikan`);
 
 --
 -- Indeks untuk tabel `pinjam_barang`
@@ -407,7 +439,7 @@ ALTER TABLE `data_role`
 -- AUTO_INCREMENT untuk tabel `jenis_barang`
 --
 ALTER TABLE `jenis_barang`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `login`
@@ -416,16 +448,22 @@ ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT untuk tabel `perbaikan_barang`
+--
+ALTER TABLE `perbaikan_barang`
+  MODIFY `id_perbaikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `pinjam_barang`
 --
 ALTER TABLE `pinjam_barang`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `satuan_barang`
 --
 ALTER TABLE `satuan_barang`
-  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `status_kepegawaian`
@@ -437,7 +475,7 @@ ALTER TABLE `status_kepegawaian`
 -- AUTO_INCREMENT untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/js/select.dataTables.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/mdi/css/materialdesignicons.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/vertical-layout-light/style.css">
@@ -22,14 +23,17 @@
     <link rel="shortcut icon" href="<?= base_url('assets'); ?>/images/logo/kementan.png" />
     <!-- icon -->
     <link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/pages/icons/mdi.html">
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/sweetalert2/sweetalert2.min.css">
     <style>
         .swal2-popup {
             font-size: 1.0rem !important;
-            height: 80%;
+            height: 100%;
         }
     </style>
+    <!-- datatable -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/DataTables/datatables.min.css"/>
 </head>
 
 <body>
@@ -273,13 +277,13 @@
                 <ul class="nav" style="padding-right: -10px;">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
-                            <i class="ti ti-home-2" style="font-size: 22px; margin-right: 8px;"></i>
+                            <i class="mdi mdi-home menu-icon" style="font-size: 20px;"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
-                            <i class="ti ti-clipboard-list" style="font-size: 22px; margin-right: 8px;"></i>
+                            <i class="mdi mdi-database menu-icon" style="font-size: 20px"></i>
                             <span class="menu-title">Data Master</span>
                             <i class="menu-arrow" style="margin-left: 40%;"></i>
                         </a>
@@ -292,14 +296,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>stok_barang" aria-expanded="false">
-                            <i class="ti ti-devices" style="font-size: 22px; margin-right: 8px;"></i>
+                            <i class="mdi mdi-clipboard-text menu-icon" style="font-size: 20px"></i>
                             <span class="menu-title">Data Barang</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#data" aria-expanded="false" aria-controls="master">
-                            <i class="ti ti-file-symlink" style="font-size: 22px; margin-right: 8px;"></i>
-                            <span class="menu-title">Data Peminjaman</span>
+                            <i class="mdi mdi-export menu-icon" style="font-size: 20px; margin-left: 2px;"></i>
+                            <span class="menu-title" style="margin-left: -2px;">Data Peminjaman</span>
                             <i class="menu-arrow" style="margin-left: 17%;"></i>
                         </a>
                         <div class="collapse" id="data">
@@ -311,15 +315,22 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url(); ?>perbaikan_barang" aria-expanded="false">
-                            <i class="ti ti-tool" style="font-size: 22px; margin-right: 9px;"></i>
+                            <i class="mdi mdi-settings-box menu-icon" style="font-size: 20px;"></i>
                             <span class="menu-title">Perbaikan Barang</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url(); ?>" aria-expanded="false">
-                            <i class="ti ti-car" style="font-size: 23px; margin-right: 8px;"></i>
-                            <span class="menu-title">Peminjaman Kendaraan</span>
+                        <a class="nav-link" data-toggle="collapse" href="#kendaraan" aria-expanded="false" aria-controls="master">
+                            <i class="mdi mdi-car menu-icon" style="font-size: 20px; margin-left: 2px;"></i>
+                            <span class="menu-title" style="margin-left: -2px;">Kendaraan</span>
+                            <i class="menu-arrow" style="margin-left: 45%;"></i>
                         </a>
+                        <div class="collapse" id="kendaraan">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>kendaraan">Data Kendaraan</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>penggunaan_mobil">Penggunaan Mobil</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </nav>

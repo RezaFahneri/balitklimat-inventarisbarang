@@ -81,4 +81,21 @@ class Pinjam_barang extends CI_Controller
             }
         }
     }
+
+    function dipinjamkan($id)
+    {
+        $where = array('id_pinjam' => $id);
+        $data = array(
+            'status' => 2,
+        );
+        $this->load->Model('Model_pinjam');
+        $this->Model_pinjam->update_data($where, $data, 'pinjam_barang');
+        $this->session->set_flashdata('sukses', 'Barang berhasil dipinjamkan');
+        redirect('pinjam_barang');
+    }
+
+    // function selesai()
+    // {
+
+    // }
 }

@@ -21,6 +21,7 @@
                                                         }
                                                     <?php } ?>
                                                 </select>
+                                                <a style="font-size: 12px;">Jika barang tidak ada, silahkan cek data barang</a><a style="font-size: 12px;" href="<?php echo base_url(); ?>stok_barang"> disini.</a>
                                             </div>
                                             <div class="form-group">
                                                 <label>Jenis Kerusakan</label>

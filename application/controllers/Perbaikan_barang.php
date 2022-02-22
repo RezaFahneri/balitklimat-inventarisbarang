@@ -66,7 +66,7 @@ class Perbaikan_barang extends CI_Controller
                 if ($stokbarang >= $qty) {
                     $this->Model_perbaikan->input_data($data, 'perbaikan_barang');
                     $updatestokbarang = (int) $stokbarang - $qty;
-                    $stokbarang = $this->db->where('id_barang', $idbarang)->get('stok_barang')->row('keterangan');
+                    // $stokbarang = $this->db->where('id_barang', $idbarang)->get('stok_barang')->row('keterangan');
                     $this->db->set('jumlah_barang', $updatestokbarang)->where('id_barang', $idbarang)->update('stok_barang');
                     $this->session->set_flashdata('sukses', 'Berhasil tambah data perbaikan barang');
                     redirect('perbaikan_barang');
@@ -80,4 +80,48 @@ class Perbaikan_barang extends CI_Controller
             }
         }
     }
+
+    function selesai($id,$idbarang)
+    {
+        $where = array('id_perbaikan' => $id);
+        $data = array(
+            'status' => 2,
+        );
+
+        $where2 = array('id_barang' => $idbarang);
+        // $qty          = $this->input->post('qty');
+        $stokbarang = $this->db->where('id_barang', $idbarang)->get('stok_barang')->row('jumlah_barang');
+        $qty = $this->db->where('id_perbaikan', $id)->get('perbaikan_barang')->row('qty');
+        // $stokbarang = $this->input->post('jumlah_barang');
+        $data2 = array(
+            'jumlah_barang' => (int) $stokbarang + $qty,
+        );
+
+        $this->Model_perbaikan->update_data($where, $data, 'perbaikan_barang');
+        $this->Model_stok->update_data_stok($where2, $data2, 'stok_barang');
+        $this->session->set_flashdata('sukses', 'Perbaikan barang sudah selesai');
+        redirect('perbaikan_barang');
+    }
+    // function selesai($id)
+    // {
+    //     $where = array('id_perbaikan' => $id);
+    //     $idbarang     = $this->input->get('id_barang');
+    //     $qty          = $this->input->get('qty');
+    //     $data = array(
+    //         'status' => 2,
+    //     );
+
+    //     // $where2 = array('id_barang' => $id_barang);
+    //     // $data2 = array(
+    //     //     'jumlah_barang' => 'jumlah_barang' + $qty,
+    //     // );
+    //     // $this->Model_stok->update_data($where2, $data2, 'stok_barang');
+
+    //     // $stokbarang = $this->db->where('id_barang', $idbarang)->get('stok_barang')->row('jumlah_barang');
+    //     // $updatestokbarang = (int) $stokbarang + $qty;
+    //     // $this->db->set('jumlah_barang', $updatestokbarang)->where('id_barang', $idbarang)->update('stok_barang');
+    //     $this->Model_perbaikan->update_data($where, $data, 'perbaikan_barang');
+    //     $this->session->set_flashdata('sukses', 'Perbaikan barang sudah selesai');
+    //     redirect('perbaikan_barang');
+    // }
 }

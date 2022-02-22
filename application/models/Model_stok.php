@@ -82,6 +82,11 @@ class Model_stok extends CI_model
 		}
 	}
 
+	function update_data_stok($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+
 	public function getDetail($id)
 	{
 		return $this->db->where('id_barang', $id)->get('stok_barang')->row();

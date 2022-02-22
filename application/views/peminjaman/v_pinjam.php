@@ -15,7 +15,7 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4">
-                                            <table id="dtBasicExample" class="table table-bordered" cellspacing="0" width="100%">
+                                            <table class="table table-bordered" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -45,13 +45,13 @@
                                                             <td><?php echo $dp->lokasi ?></td>
                                                             <?php if ($dp->status == '1') { ?>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-outline-warning btn-lg" style="height:40px;">Menunggu Verifikasi</button>
+                                                                    <a id="dipinjamkan1" class="btn btn-outline-warning btn-md" href="<?php echo site_url('pinjam_barang/dipinjamkan/' . $dp->id_pinjam) ?>">Menunggu Verifikasi</a>
                                                                 </td>
                                                             <?php } else { ?>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-outline-success btn-lg" style="height:40px;" disabled>Dipinjam</button>
-                                                                    <hr style="width:50%;text-align:left;margin-left:0">
-                                                                    <button type="button" class="btn btn-outline-info btn-lg" style="height:40px;">Selesai</button>
+                                                                    <button type="button" class="btn btn-outline-success btn-md" disabled>Dipinjam</button>
+                                                                    <hr style="width:60%;text-align:left;margin-left:0">
+                                                                    <button type="button" class="btn btn-outline-info btn-md">Selesai</button>
                                                                 </td>
                                                             <?php } ?>
                                                         </tr>

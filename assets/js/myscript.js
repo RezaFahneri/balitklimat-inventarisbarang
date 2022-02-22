@@ -87,3 +87,23 @@ $(document).on('click', '#tombol-hapus3',function (e) {
         }
     })
 })
+
+$(document).on('click', '#dipinjamkan1',function (e) {
+
+    e.preventDefault();
+    var href = $(this).attr('href')
+
+    Swal.fire({
+        title: 'Pinjamkan barang?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Pinjamkan'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location = href;
+        }
+    })
+})

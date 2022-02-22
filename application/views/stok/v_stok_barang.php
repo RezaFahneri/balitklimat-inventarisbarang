@@ -15,7 +15,7 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4 ">
-                                            <table id="dtBasicExample" class="table table-bordered" cellspacing="0" width="100%">
+                                            <table id="dtBasicExample" class="table table-bordered display" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -48,9 +48,9 @@
                                                             <!-- <td><?php echo $dp->keterangan ?></td> -->
                                                             <td>
                                                                 <!-- <a class="btn btn-sm btn-info" href="<?php echo base_url('data_stok/detail/' . $dp->id_barang) ?>"><i class="ti ti-info-circle"></i></a> -->
-                                                                <a style="font-size:25px" class="btn btn-md btn-success" href="<?php echo base_url() ?>stok_barang/edit?id_barang=<?php echo $dp->id_barang ?>"><i class="ti ti-pencil"></i></a>
+                                                                <a style="font-size:25px" class="btn btn-md btn-success" href="<?php echo base_url() ?>stok_barang/edit?id_barang=<?php echo $dp->id_barang ?>"><i class="mdi mdi-pencil"></i></a>
                                                                 <!-- <a style="height:23px" type="button" class="btn btn btn-success" href="<?php echo base_url('stok_barang/edit/' . $dp->id_barang) ?> "?><i class="ti ti-pencil"></i></a> -->
-                                                                <a style="font-size:25px" id="tombol-hapus3" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="ti ti-trash"></i></a>
+                                                                <a style="font-size:25px" id="tombol-hapus3" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="mdi mdi-delete"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
