@@ -26,6 +26,24 @@ if (flash5) {
     })
 }
 
+var flash3 = $('#flash3').data('flash');
+if (flash3) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Login',
+        text: flash3,
+    })
+}
+
+var flash4 = $('#flash3').data('flash');
+if (flash4) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: flash4,
+    })
+}
+
 
 //sweetalert2 tombol hapus
 $(document).on('click', '#tombol-hapus1',function (e) {

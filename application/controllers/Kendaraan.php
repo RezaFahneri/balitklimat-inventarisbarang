@@ -7,6 +7,9 @@ class Kendaraan extends CI_Controller {
         parent::__construct();
         $this->load->Model('Model_kendaraan');
         $this->load->helper('url');
+        if ($this->session->userdata('logged_in') == false) {
+			redirect('login');
+		}
     }
     function index()
     {

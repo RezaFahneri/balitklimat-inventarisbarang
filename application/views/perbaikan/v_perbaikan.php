@@ -38,8 +38,8 @@
                                                             <td><?php echo $dp->nama_barang ?></td>
                                                             <td><?php echo $dp->jenis ?></td>
                                                             <td><?php echo $dp->tempat ?></td>
-                                                            <td><?php echo $dp->tglperbaikan ?></td>
-                                                            <td><?php echo $dp->tglselesai ?></td>
+                                                            <td><?php echo tanggal_indonesia($dp->tglperbaikan) ?></td>
+                                                            <td><?php echo tanggal_indonesia($dp->tglselesai) ?></td>
                                                             <td><?php echo $dp->qty ?></td>
                                                             <?php if ($dp->status == '1') { ?>
                                                                 <td>

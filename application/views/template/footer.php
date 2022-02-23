@@ -64,22 +64,43 @@
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/addons/datatables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#dtBasicExample').DataTable();
+            $('#BasicExample').DataTable();
             $('.dataTables_length').addClass('bs-select');
         });
     </script>
 
-    <!-- <script type="text/javascript" src="<?= base_url(); ?>assets//DataTables/datatables.min.js"></script>
+    <!-- table filter -->
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/Simple-jQuery-Dropdown-Table-Filter-Plugin-ddtf-js/ddtf.js"></script>
+    <script>
+        jQuery('#dtBasicExample').ddTableFilter();
+    </script>
+
+    <!-- Bootstrap Datatables  -->
+    <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>assets//DataTables/datatables.js"></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
-                "lengthMenu": [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"]
-                ]
-            });
+            $('#datatable').DataTable();
         });
-    </script> -->
+    </script>
+
+    <!-- Detail Profil  -->
+    <script>
+        var loadFile = function(event) {
+            var foto_update = document.getElementById('foto_update');
+            foto_update.src = URL.createObjectURL(event.target.files[0]);
+            foto_update.onload = function() {
+                URL.revokeObjectURL(foto_update.src) // free memory 
+            }
+            $('#foto').hide();
+            $('#kamera').hide();
+            // let element = document.getElementById("but");
+            // let hidden = element.getAttribute("hidden");
+
+            // if (!hidden) {
+            //     element.removeAttribute("hidden");
+            // }
+        };
+    </script>
 
 
 

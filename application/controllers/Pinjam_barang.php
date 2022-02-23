@@ -7,10 +7,14 @@ class Pinjam_barang extends CI_Controller
         parent::__construct();
         $this->load->Model('Model_pinjam');
         $this->load->Model('Model_stok');
+        $this->load->Model('Model_riwayat');
         $this->load->helper('url', 'array', 'fungsi');
         $this->load->library('form_validation', 'upload');
         $this->load->library('session');
         $this->session->keep_flashdata('pesan');
+        if ($this->session->userdata('logged_in') == false) {
+			redirect('login');
+		}
     }
 
     function index()
@@ -77,6 +81,7 @@ class Pinjam_barang extends CI_Controller
                     redirect('pinjam_barang/pinjam');
                 }
             } else {
+                $this->session->set_flashdata('pesan', validation_errors());
                 redirect('pinjam_barang/pinjam');
             }
         }
@@ -94,8 +99,52 @@ class Pinjam_barang extends CI_Controller
         redirect('pinjam_barang');
     }
 
-    // function selesai()
-    // {
+    function selesai($id, $idbarang)
+    {
+        //input data ke tabel riwayat
+        $id = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('id_pinjam');
+        $idbarang = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('id_barang');
+        $peminjam = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('peminjam');
+        $tglpinjam = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('tglpinjam');
+        $tglselesai = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('tglselesai');
+        $qty = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('qty');
+        $kegiatan = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('kegiatan');
+        $lokasi = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('lokasi');
 
-    // }
+        $data = array(
+            'id_barang'    => $idbarang,
+            'peminjam'    => $peminjam,
+            'tglpinjam'   => $tglpinjam,
+            'tglselesai'  => $tglselesai,
+            'qty'         => $qty,
+            'kegiatan'    => $kegiatan,
+            'lokasi'      => $lokasi,
+            'status_riwayat'      => 3,
+        );
+        $this->Model_riwayat->input_data($data, 'riwayat_peminjaman');
+
+        //menambah kembali stok barang
+        $where2 = array('id_barang' => $idbarang);
+        $stokbarang = $this->db->where('id_barang', $idbarang)->get('stok_barang')->row('jumlah_barang');
+        $qty = $this->db->where('id_pinjam', $id)->get('pinjam_barang')->row('qty');
+        $data2 = array(
+            'jumlah_barang' => (int) $stokbarang + $qty,
+        );
+        $this->Model_stok->update_data_stok($where2, $data2, 'stok_barang');
+
+        //hapus datanya
+        $where = array('id_pinjam' => $id);
+        $this->Model_pinjam->hapus_data($where, 'pinjam_barang');
+        $this->session->set_flashdata('sukses', 'Peminjaman barang sudah selesai');
+        redirect('pinjam_barang');
+    }
+
+    function hapus($id)
+    {
+        $where = array('id_barang' => $id);
+        $this->Model_stok->hapus_data($where, 'stok_barang');
+        $this->session->set_flashdata('sukses', 'Data barang berhasil dihapus');
+        redirect('stok_barang');
+    }
+    
 }

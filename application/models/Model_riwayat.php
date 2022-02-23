@@ -1,13 +1,8 @@
 <?php
-class Model_pinjam extends CI_model
+class Model_riwayat extends CI_model
 {
 	function tampil_data($table)
 	{
-		// $this->db->select('*');
-		// $this->db->join('stok_barang', 'stok_barang.id_barang = pinjam_barang.id_barang');
-		// if ($id_barang != null) {
-		// 	$this->db->where('id_barang', $id_barang);
-		// }
 		return $this->db->get($table);
 	}
 
@@ -15,8 +10,8 @@ class Model_pinjam extends CI_model
 	{
 		//return $query = $this->db->order_by('id_proyek', 'ASC')->get('proyek')->result();
 		$this->db->select('*');
-		$this->db->from('pinjam_barang');
-		$this->db->join('stok_barang', 'stok_barang.id_barang = pinjam_barang.id_barang');
+		$this->db->from('riwayat_peminjaman');
+		$this->db->join('stok_barang', 'stok_barang.id_barang = riwayat_peminjaman.id_barang');
 		return $this->db->get()->result();
 	}
 
@@ -29,7 +24,7 @@ class Model_pinjam extends CI_model
 		$this->db->update($table,$data);
 	}
 
-	function hapus_data($where, $table)
+    function hapus_data($where, $table)
 	{
 		$this->db->where($where);
 		$this->db->delete($table);

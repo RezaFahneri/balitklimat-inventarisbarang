@@ -15,7 +15,7 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4">
-                                            <table class="table table-bordered" cellspacing="0" width="100%">
+                                            <table  id="dtBasicExample" class="table table-bordered" cellspacing="0" width="150%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -36,7 +36,7 @@
                                                             <td><?php echo $no++ ?></td>
                                                             <td><?php echo $dp->nama_pegawai ?></td>
                                                             <td><?php echo $dp->no_polisi ?></td>
-                                                            <td><?php echo $dp->tgl_pemakaian ?></td>
+                                                            <td><?php echo tanggal_indonesia($dp->tgl_pemakaian) ?></td>
                                                             <td><?php echo $dp->lama_pemakaian ?></td>
                                                             <td><?php echo $dp->perjalanan ?></td>
                                                             <?php if ($dp->status_penggunaan == '1') { ?>

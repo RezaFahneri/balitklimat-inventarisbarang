@@ -10,6 +10,9 @@ class Stok_barang extends CI_Controller
         $this->load->Model('Model_satuan');
         $this->load->helper('url','array');
         $this->load->library('form_validation', 'upload', 'session');
+        if ($this->session->userdata('logged_in') == false) {
+			redirect('login');
+		}
     }
 
     function index()

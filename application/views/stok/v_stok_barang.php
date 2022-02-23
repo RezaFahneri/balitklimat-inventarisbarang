@@ -15,14 +15,14 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4 ">
-                                            <table id="dtBasicExample" class="table table-bordered display" cellspacing="0" width="100%">
+                                            <table id="datatable" class="table table-bordered display" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
                                                         <!-- <th>Kode</th> -->
                                                         <th>Gambar</th>
                                                         <th>Nama Barang</th>
-                                                        <!-- <th>Jenis Barang</th> -->
+                                                        <th>Jenis Barang</th>
                                                         <th>Jumlah Barang</th>
                                                         <th>Satuan Barang</th>
                                                         <th>Kondisi Barang</th>
@@ -41,7 +41,7 @@
                                                             <td>
                                                                 <img class="zoomable img-lg" src="<?php echo base_url() . 'assets/images/upload/' . $dp->gambar ?>" style="height:40px;">
                                                             <td><?php echo $dp->nama_barang ?></td>
-                                                            <!-- <td><?php echo $dp->jenis_barang ?></td> -->
+                                                            <td><?php echo $dp->jenis_barang ?></td>
                                                             <td><?php echo $dp->jumlah_barang ?></td>
                                                             <td><?php echo $dp->satuan_barang ?></td>
                                                             <td><?php echo $dp->kondisi_barang ?></td>

@@ -10380,7 +10380,7 @@
 		 * Note that the `pageLength` property will be automatically set to the
 		 * first value given in this array, unless `pageLength` is also provided.
 		 *  @type array
-		 *  @default [ 10, 25, 50, 100 ]
+		 *  @default [ 25, 50, 100 ]
 		 *
 		 *  @dtopt Option
 		 *  @name DataTable.defaults.lengthMenu
@@ -10388,11 +10388,11 @@
 		 *  @example
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
-		 *        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+		 *        "lengthMenu": [[25, 50, -1], [25, 50, "All"]]
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [ 10, 25, 50, 100 ],
+		"aLengthMenu": [ 25, 50, 100 ],
 	
 	
 		/**
@@ -10596,7 +10596,7 @@
 	
 		/**
 		 * Allows the end user to select the size of a formatted page from a select
-		 * menu (sizes are 10, 25, 50 and 100). Requires pagination (`paginate`).
+		 * menu (sizes are 25, 50 and 100). Requires pagination (`paginate`).
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -11398,7 +11398,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"iDisplayLength": 10,
+		"iDisplayLength": 25,
 	
 	
 		/**
@@ -11796,7 +11796,7 @@
 			/**
 			 * Detail the action that will be taken when the drop down menu for the
 			 * pagination length option is changed. The '_MENU_' variable is replaced
-			 * with a default select list of 10, 25, 50 and 100, and can be replaced
+			 * with a default select list of 25, 50 and 100, and can be replaced
 			 * with a custom select box if required.
 			 *  @type string
 			 *  @default Show _MENU_ entries
@@ -11820,7 +11820,6 @@
 			 *      $('#example').dataTable( {
 			 *        "language": {
 			 *          "lengthMenu": 'Display <select>'+
-			 *            '<option value="10">10</option>'+
 			 *            '<option value="20">20</option>'+
 			 *            '<option value="30">30</option>'+
 			 *            '<option value="40">40</option>'+
@@ -13836,9 +13835,9 @@
 		/**
 		 * Paging display length
 		 *  @type int
-		 *  @default 10
+		 *  @default 25
 		 */
-		"_iDisplayLength": 10,
+		"_iDisplayLength": 25,
 	
 		/**
 		 * Paging start point - aiDisplay index

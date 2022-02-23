@@ -25,7 +25,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama Peminjam</label>
-                                                <input type="text" name="peminjam" class="form-control" required>
+                                                <input type="text" name="peminjam" class="form-control" value="<?php echo $this->db->where('email', $this->session->userdata('email'))->get('data_pegawai')->row('nama_pegawai'); ?>" readonly required>
                                                 <?php echo form_error('peminjam', '<div class="text-small text-danger"></div>') ?>
                                             </div>
                                             <div class="form-group">

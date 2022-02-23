@@ -5,44 +5,37 @@ class Data_Pegawai extends CI_Controller {
     {
         parent::__construct();
         $this->load->Model('Model_pegawai');
-        $this->load->Model('Model_golongan');
-        $this->load->Model('Model_status_pegawai');
-        $this->load->Model('Model_pangkat');
-        $this->load->Model('Model_jabatan');
-        $this->load->Model('Model_divisi');
+        $this->load->Model('Model_master_pegawai');
         $this->load->helper('url');
-        $this->load->library('session');
-		if($this->session->userdata('logged_in') == false){
+        if ($this->session->userdata('logged_in') == false) {
 			redirect('login');
 		}
     }
     function index()
     {
         $data['data_pegawai'] = $this->Model_pegawai->getList();
-        $data['title'] = "ASN BALITKLIMAT | Data Pegawai";
+        $data['title'] = "PERJADIN BALITKLIMAT | Data Pegawai";
         $this->load->view('templates/v_template',$data);
 		$this->load->view('Data_Pegawai/v_pegawai',$data);
         $this->load->view('templates/footer',$data);
     }
     public function detail($nip)
     {
-        $data['title'] = "ASN BALITKLIMAT | Detail Pegawai";
+        $data['title'] = "PERJADIN BALITKLIMAT | Detail Pegawai";
         $detail = $this->Model_pegawai->detail_data($nip);
         $data['detail'] = $detail;
         $this->load->view('templates/v_template', $data);
         $this->load->view('Data_Pegawai/v_detail_pegawai', $data);
         $this->load->view('templates/footer');
     }
-    
     function tambah()
 	{
-		$data['title'] = 'ASN BALITKLIMAT | Tambah Pegawai';
-        $data['id_golongan'] = $this->Model_golongan->getList();
-        $data['id_status_peg'] = $this->Model_status_pegawai->getList();
-        $data['id_pangkat'] = $this->Model_pangkat->getList();
-        $data['id_jabatan'] = $this->Model_jabatan->getList();
-        $data['id_divisi'] = $this->Model_divisi->getList();
-
+		$data['title'] = 'PERJADIN BALITKLIMAT | Tambah Pegawai';
+        $data['golongan'] = $this->Model_master_pegawai->getListGolongan();
+        $data['status_kepegawaian'] = $this->Model_master_pegawai->getListSPG();
+        $data['pangkat'] = $this->Model_master_pegawai->getListPangkat();
+        $data['jabatan'] = $data['jabatan'] = $this->Model_master_pegawai->getListJabatan();
+        $data['divisi'] = $this->Model_master_pegawai->getListDivisi();
         $this->load->view('templates/v_template',$data);
 		$this->load->view('Data_Pegawai/v_tambah_pegawai',$data);
         $this->load->view('templates/footer',$data);
@@ -57,8 +50,9 @@ class Data_Pegawai extends CI_Controller {
 
         if($this->upload->do_upload('foto')) {
              $fileData = $this->upload->data();
+             $nama_pegawai = $this->input->post('nama_pegawai');
              $data = array (
-                  'nama_pegawai' => $this->input->post('nama_pegawai'),
+                  'nama_pegawai' => $nama_pegawai,
                   'nip'   => $this->input->post('nip'),
                   'foto'  => $fileData['file_name'],
                   'id_golongan'  => $this->input->post('id_golongan'),
@@ -74,16 +68,17 @@ class Data_Pegawai extends CI_Controller {
                   'pumk' => $this->input->post('pumk'), 
                   'kpa' => $this->input->post('kpa'), 
                   'ppk' => $this->input->post('ppk'),
-                  'pj' => $this->input->post('pj'));
+                  'pj' => $this->input->post('pj'),
+                  'bendahara' => $this->input->post('bendahara'));
 
-                  if($this->Model_pegawai->input_data($data, 'data_pegawai')) {
-                    $this->session->set_flashdata('sukses','Data pegawai dengan nama '. $nama_pegawai. ' berhasil ditambahkan');
+                if($this->Model_pegawai->input_data($data, 'data_pegawai')) {
+                    $this->session->set_flashdata('sukses','Data pegawai dengan nama '.$nama_pegawai.' berhasil ditambahkan');
                     redirect('data_pegawai');
                 } 
                 else {
                   $this->session->set_flashdata('error');
              }
-             $this->session->set_flashdata('sukses','Data Pegawai dengan nama '. $nama_pegawai. ' berhasil ditambahkan');
+             $this->session->set_flashdata('sukses','Data pegawai dengan nama '.$nama_pegawai.' berhasil ditambahkan');
              redirect('data_pegawai');
         } else {
              redirect(base_url('data_pegawai/tambah'));
@@ -93,18 +88,23 @@ class Data_Pegawai extends CI_Controller {
     {
         $nip = $this->input->get('nip');
         $data['primary_view'] = 'Data_Pegawai/v_update_pegawai';
-        $data['id_golongan'] = $this->Model_golongan->getList();  
-        $data['id_status_peg'] = $this->Model_status_pegawai->getList();  
-        $data['id_pangkat'] = $this->Model_pangkat->getList();  
-        $data['id_jabatan'] = $this->Model_jabatan->getList();  
-        $data['id_divisi'] = $this->Model_divisi->getList();  
+        $data['golongan'] = $this->Model_master_pegawai->getListGolongan();
+
+        $data['spg'] = $this->Model_master_pegawai->getListSPG();
         
+        $data['pangkat'] = $this->Model_master_pegawai->getListPangkat();
+
+        $data['jabatan'] = $this->Model_master_pegawai->getListJabatan();
+
+        $data['divisi'] = $this->Model_master_pegawai->getListDivisi();
+
         $data['update_pegawai'] = $this->Model_pegawai->getList2($nip);
-        $data['title'] = "Edit Data Pegawai | ASN";
+        $data['title'] = "PERJADIN | Edit Data Pegawai";
         $this->load->view('templates/v_template', $data);
         $this->load->view('Data_Pegawai/v_update_pegawai', $data);
         $this->load->view('templates/footer',$data);
     }
+
     function update()
     {
         $config['upload_path'] = './assets/images/foto/';
@@ -116,6 +116,7 @@ class Data_Pegawai extends CI_Controller {
         if($this->upload->do_upload('foto')) {
              $nip = $this->input->post('nip');
              $fileData = $this->upload->data();
+             $data['update_pegawai'] = $this->db->query("SELECT * FROM data_pegawai WHERE nip='$nip'")->result();
              $data1 = array (
                   'nama_pegawai' => $this->input->post('nama_pegawai'),
                   'foto'  => $fileData['file_name'],
@@ -132,19 +133,20 @@ class Data_Pegawai extends CI_Controller {
                   'pumk' => $this->input->post('pumk'), 
                   'kpa' => $this->input->post('kpa'), 
                   'ppk' => $this->input->post('ppk'),
-                  'pj' => $this->input->post('pj')
+                  'pj' => $this->input->post('pj'),
+                  'bendahara' => $this->input->post('bendahara')
                 );
                 $where = array(
                     'nip'   => $nip,
                 );
                 if($this->Model_pegawai->update_data($where, $data1, 'data_pegawai')) {
-                    $this->session->set_flashdata('sukses','Data pegawai berhasil diperbaharui');
+                    $this->session->set_flashdata('sukses','Data pegawai berhasil diperbarui');
                     redirect('data_pegawai');
                 } 
                 else {
                   $this->session->set_flashdata('error');
              }
-             $this->session->set_flashdata('sukses','Data pegawai berhasil diperbaharui');
+             $this->session->set_flashdata('sukses','Data pegawai berhasil diperbarui');
              redirect('data_pegawai');
         } else {
              redirect('data_pegawai/edit?nip='. $this->input->post('nip'));
@@ -153,16 +155,14 @@ class Data_Pegawai extends CI_Controller {
     function hapus($nip)
 	{
 		$where = array('nip' => $nip);
-		$this->Model_pegawai->hapus_data($where, 'data_pegawai');
-        $error = $this->db->error();
-        if ($error ['code'] != 0){
-            echo $this->session->set_flashdata('error','Data pegawai digunakan pada tabel lain');
-        }
-        else{
-            echo $this->session->set_flashdata('sukses','Data pegawai berhasil dihapus');
-        }
-        echo "<script>window.location='".site_url('data_pegawai')."';</script>";
-		// redirect('data_pegawai');
+        if ($this->Model_pegawai->hapus_data($where, 'data_pegawai') == true) :
+            $this->session->set_flashdata('sukses','Data pegawai berhasil dihapus');
+			redirect('data_pegawai');
+		endif;
+        if ($this->Model_pegawai->hapus_data($where, 'data_pegawai') == false) :
+            $this->session->set_flashdata('error','Data pegawai gagal dihapus karena data pegawai ini digunakan pada tabel lain');
+			redirect('data_pegawai');
+		endif;
 	}
 }
 ?>

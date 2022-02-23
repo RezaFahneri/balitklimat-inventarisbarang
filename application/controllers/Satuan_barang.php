@@ -7,6 +7,9 @@ class Satuan_barang extends CI_Controller {
         parent::__construct();
         $this->load->Model('Model_satuan');
         $this->load->helper('url');
+        if ($this->session->userdata('logged_in') == false) {
+			redirect('login');
+		}
     }
     function index()
     {

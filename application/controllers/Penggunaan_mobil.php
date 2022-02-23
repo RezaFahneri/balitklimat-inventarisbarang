@@ -11,6 +11,9 @@ class Penggunaan_mobil extends CI_Controller
         $this->load->helper('url', 'array', 'fungsi');
         $this->load->library('form_validation', 'upload');
         $this->load->library('session');
+        if ($this->session->userdata('logged_in') == false) {
+			redirect('login');
+		}
     }
 
     function index()
@@ -27,6 +30,10 @@ class Penggunaan_mobil extends CI_Controller
         $data['title'] = 'Tambah Penggunaan Mobil | Balitklimat';
         $data['pegawai'] = $this->Model_pegawai->tampil_datapenggunaan();
         $data['kendaraan'] = $this->Model_kendaraan->tampil_datapenggunaan();
+        $data['sopir1_dalam'] = $this->Model_penggunaan->count_sopir1_dalam();
+        $data['sopir1_luar'] = $this->Model_penggunaan->count_sopir1_luar();
+        $data['sopir2_dalam'] = $this->Model_penggunaan->count_sopir2_dalam();
+        $data['sopir2_luar'] = $this->Model_penggunaan->count_sopir2_luar();
         $this->load->view('template/template', $data);
         $this->load->view('kendaraan/v_tambah_penggunaan', $data);
         $this->load->view('template/footer', $data);

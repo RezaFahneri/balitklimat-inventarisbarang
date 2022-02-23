@@ -4,18 +4,18 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold">Peminjaman Barang</h3><br>
-                        <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
+                        <h3 class="m-0 font-weight-bold">Riwayat Peminjaman Barang</h3><br>
+                        <!-- <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                         <div class="col-md-4 grid-margin">
                             <a href="<?php echo base_url() ?>pinjam_barang/pinjam" class="btn btn-success btn-md">Pinjam Barang</a>
-                        </div>
+                        </div> -->
                         <div class="col-md-12 grid-margin">
                             <div class="card mb-12">
                                 <div class="col-lg-12 grid-margin stretch-card">
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4">
-                                            <table id="datatable" class="table table-bordered" cellspacing="0" width="100%">
+                                            <table class="table table-bordered" cellspacing="0" width="100%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
@@ -32,27 +32,21 @@
                                                 <tbody>
                                                     <?php
                                                     $no = 1;
-                                                    foreach ($data_pinjam as $dp) {
+                                                    foreach ($data_riwayat as $dr) {
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $no++ ?></td>
-                                                            <td><?php echo $dp->nama_barang ?></td>
-                                                            <td><?php echo $dp->peminjam ?></td>
-                                                            <td><?php echo tanggal_indonesia($dp->tglpinjam) ?></td>
-                                                            <td><?php echo tanggal_indonesia($dp->tglselesai) ?></td>
-                                                            <td><?php echo $dp->qty ?></td>
-                                                            <td><?php echo $dp->kegiatan ?></td>
-                                                            <td><?php echo $dp->lokasi ?></td>
-                                                            <?php if ($dp->status == '1') { ?>
+                                                            <td><?php echo $dr->nama_barang ?></td>
+                                                            <td><?php echo $dr->peminjam ?></td>
+                                                            <td><?php echo tanggal_indonesia($dr->tglpinjam) ?></td>
+                                                            <td><?php echo tanggal_indonesia($dr->tglselesai) ?></td>
+                                                            <td><?php echo $dr->qty ?></td>
+                                                            <td><?php echo $dr->kegiatan ?></td>
+                                                            <td><?php echo $dr->lokasi ?></td>
+                                                            <?php if ($dr->status_riwayat == '3') { ?>
                                                                 <td>
-                                                                    <a id="dipinjamkan1" class="btn btn-outline-warning btn-md" href="<?php echo site_url('pinjam_barang/dipinjamkan/' . $dp->id_pinjam) ?>">Menunggu Verifikasi</a>
+                                                                    <button class="btn btn-outline-secondary btn-md" disabled>Selesai</button>
                                                                 </td>
-                                                            <?php } else { ?>
-                                                                <td height="40px">
-                                                                    <button type="button" class="btn btn-outline-success" disabled>Dipinjam</button>
-                                                                    <hr style="width:60%;text-align:left;margin-left:0">
-                                                                    <a type="button" class="btn btn-outline-info btn-md" href="<?php echo base_url('pinjam_barang/selesai/'.$dp->id_pinjam).'/'.$dp->id_barang ?>">Selesai</a>
-                                                                </tdstyle=>
                                                             <?php } ?>
                                                         </tr>
                                                     <?php } ?>

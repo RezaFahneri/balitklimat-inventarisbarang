@@ -15,9 +15,9 @@ class Dashboard extends CI_Controller
 		// 	// // if($this->session->userdata('logged_in') == true){
 		// 	// // 	redirect('welcome');
 		// 	// // }
-		// 	// if($this->session->userdata('logged_in') == true){
-		// 	// 	redirect('beranda','refresh');
-		// 	// }
+		if ($this->session->userdata('logged_in') == false) {
+			redirect('login');
+		}
 		$this->load->model('Model_dashboard');
 	}
 
@@ -31,5 +31,16 @@ class Dashboard extends CI_Controller
 		$this->load->view('template/template', $data);
 		$this->load->view('v_dashboard');
 		$this->load->view('template/footer', $data);
+	}
+
+	public function logout()
+	{
+		$data = array(
+			'email'	=> '',
+			'logged_in'	=> false,
+		);
+
+		$this->session->sess_destroy();
+		redirect('login');
 	}
 }

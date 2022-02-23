@@ -17,6 +17,14 @@
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?= base_url('assets'); ?>/images/logo/kementan.png" />
+  <!-- sweetalert2 -->
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/sweetalert2/sweetalert2.min.css">
+  <style>
+    .swal2-popup {
+      font-size: 1.0rem !important;
+      height: 100%;
+    }
+  </style>
 </head>
 
 <body>
@@ -26,6 +34,8 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="wrapper auth-form-light text-center py-5 px-4 px-sm-5">
+              <div class="flash-data" id="flash3" data-flash="<?= $this->session->flashdata('gagal'); ?>"></div>
+              <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
               <div class="brand-logo">
                 <img src="<?= base_url('assets'); ?>/images/logo/kementan.png" alt="logo">
               </div>
@@ -33,7 +43,7 @@
               <h3><b>Agroklimat dan Hidrologi</b></h3>
               <form class="pt-3" action="<?php echo base_url() ?>login/proseslogin" method="post">
                 <div class="form-field">
-                  <input type="email" id='username' class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name='email' required>
+                  <input type="email" id='email' class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name='email' required>
                 </div>
                 <div class="form-field">
                   <input type="password" id='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name='password' required">
@@ -41,16 +51,6 @@
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                 </div></br>
-                <?php
-                $error = $this->session->flashdata('error');
-                if (!empty($error)) {
-                  echo '
-                     <div class="alert alert-danger" >
-                     ' . $error . ' 
-                     </div>
-                   ';
-                }
-                ?>
                 <div class="my-2 d-flex text-center">
                   <a href="#" class="auth-link text-black">Forgot password?</a>
                 </div>
@@ -79,6 +79,10 @@
 <script src="<?= base_url('assets'); ?>/js/settings.js"></script>
 <script src="<?= base_url('assets'); ?>/js/todolist.js"></script>
 <!-- endinject -->
+
+<!-- sweet alert 2 -->
+<script src="<?= base_url('assets'); ?>/js/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('assets'); ?>/js/myscript.js"></script>
 </body>
 
 </html>

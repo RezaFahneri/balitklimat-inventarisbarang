@@ -63,7 +63,7 @@ class Login extends CI_Controller
           //  }  
 
           $this->load->library('form_validation');
-          $this->form_validation->set_rules('email', 'email', 'required');
+          $this->form_validation->set_rules('email', 'Email', 'required');
           $this->form_validation->set_rules('password', 'Password', 'required');
           if ($this->form_validation->run()) {
                //true  
@@ -72,13 +72,15 @@ class Login extends CI_Controller
                //Model function  
                $this->load->Model('Model_login');
                if ($this->Model_login->bisalogin($email, $password)) {
+                    $this->session->set_flashdata('sukses', 'Login berhasil');
                     redirect('dashboard');
                } else {
-                    $this->session->set_flashdata('error', 'Invalid email and Password');
+                    $this->session->set_flashdata('gagal', 'Email atau Password salah!');
                     redirect('login');
                }
           } else {
                //false  
+               $this->session->set_flashdata('gagal', validation_errors());
                $this->index();
           }
      }

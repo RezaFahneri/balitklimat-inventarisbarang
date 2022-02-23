@@ -4,8 +4,23 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
+                        <h3 class="m-0 font-weight-bold">Statistik Sopir</h3><br>
+                        <div class="flash-data" id="flash" data-flash="<?= $this->session->flashdata('pesan'); ?>"></div>
+                        <div class="col-md-12 grid-margin">
+                            <div class="card shadow mb-12">
+                                <div class="col-lg-12 grid-margin stretch-card">
+                                    <div class="card"></br>
+                                        <h4>1. Reza Fahneri</h4>
+                                        <p>Perjalanan dalam Kota : <?= $sopir1_dalam; ?> kali</p>
+                                        <p>Perjalanan luar Kota : <?= $sopir1_luar; ?> kali</p></br>
+                                        <h4>2. Robbi Hably</h4>
+                                        <p>Perjalanan dalam Kota : <?= $sopir2_dalam; ?> kali</p>
+                                        <p>Perjalanan luar Kota : <?= $sopir2_luar; ?> kali</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <h3 class="m-0 font-weight-bold">Tambah Penggunaan Mobil</h3><br>
-                        <div class="flash-data" id="flash" data-flash="<?= $this->session->flashdata('pesan');?>"></div>
                         <div class="col-md-12 grid-margin">
                             <div class="card shadow mb-12">
                                 <div class="col-lg-12 grid-margin stretch-card">
@@ -16,7 +31,7 @@
                                                 <select name="nip" id="nip" class="form-control" required>
                                                     <option value="">--Pilih Nama Pegawai--</option>
                                                     <?php
-                                                    foreach ($pegawai as $row) { ?>                                   
+                                                    foreach ($pegawai as $row) { ?>
                                                         <option value="<?php echo $row->nip; ?>"><?php echo $row->nama_pegawai; ?></option>';
                                                         }
                                                     <?php } ?>
@@ -27,7 +42,7 @@
                                                 <select name="id_kendaraan" id="id_kendaraan" class="form-control" required>
                                                     <option value="">--Pilih No Polisi--</option>
                                                     <?php
-                                                    foreach ($kendaraan as $row) { ?>                                   
+                                                    foreach ($kendaraan as $row) { ?>
                                                         <option value="<?php echo $row->id_kendaraan; ?>"><?php echo $row->no_polisi; ?></option>';
                                                         }
                                                     <?php } ?>
@@ -72,10 +87,11 @@
 </div>
 </div>
 
-<script>
-        <head>
-        <?php foreach($head as $headItem): ?> 
-        <?php echo $headItem."\n"; ?>
-        <?php endforeach; ?>
-        </head>
-</script>
+<!-- <script>
+    < head >
+        <?php foreach ($head as $headItem) : ?>
+    <?php echo $headItem . "\n"; ?>
+    <?php endforeach; ?>
+        <
+        /head>
+</script> -->
