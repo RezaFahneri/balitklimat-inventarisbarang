@@ -73,9 +73,13 @@ class Kendaraan extends CI_Controller {
     }
     function hapus($id)
 	{
-		$where = array('id_kendaraan' => $id);
-		$this->Model_kendaraan->hapus_data($where, 'data_kendaraan');
-        $this->session->set_flashdata('sukses', 'Data kendaraan berhasil dihapus');
-		redirect('kendaraan');
+		if ($this->Model_kendaraan->hapus_data($id) == true) :
+            $this->session->set_flashdata('sukses', 'Data kendaraan berhasil dihapus');
+            redirect('data_kendaraan');
+        endif;
+        if ($this->Model_kendaraan->hapus_data($id) == false) :
+            $this->session->set_flashdata('gagal', 'Data kendaraan ini digunakan pada tabel lain');
+            redirect('data_kendaraan');
+        endif;
 	}
 }

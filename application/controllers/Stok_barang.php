@@ -8,11 +8,11 @@ class Stok_barang extends CI_Controller
         $this->load->Model('Model_stok');
         $this->load->Model('Model_jenis');
         $this->load->Model('Model_satuan');
-        $this->load->helper('url','array');
+        $this->load->helper('url', 'array');
         $this->load->library('form_validation', 'upload', 'session');
         if ($this->session->userdata('logged_in') == false) {
-			redirect('login');
-		}
+            redirect('login');
+        }
     }
 
     function index()
@@ -83,11 +83,11 @@ class Stok_barang extends CI_Controller
         $id = $this->input->get('id_barang');
         $data['primary_view'] = 'stok/v_update_stok';
         // CHECK : Data Availability
-		// if ($this->Model_stok->checkAvailability($id) == true) {
-		// 	$data['primary_view'] = 'stok_barang/edit';
-		// } else {
-		// 	// $data['primary_view'] = '404_view';
-		// }
+        // if ($this->Model_stok->checkAvailability($id) == true) {
+        // 	$data['primary_view'] = 'stok_barang/edit';
+        // } else {
+        // 	// $data['primary_view'] = '404_view';
+        // }
         $data['jenis'] = $this->Model_jenis->getList();
 
         $data['satuan'] = $this->Model_satuan->getList();
@@ -145,43 +145,15 @@ class Stok_barang extends CI_Controller
         }
     }
 
-    // $this->_rules();
-    // if ($this->form_validation->run() == FALSE) {
-    //     $id = $this->input->post('id_barang');
-    //     $this->edit($id);
-    // } else {
-    //     $id = $this->input->post('id_barang');
-    //     $kode               = $this->input->post('kode');
-    //     $gambar                  = $this->input->post('gambar');
-    //     $nama_barang               = $this->input->post('nama_barang');
-    //     $id_jenis = $this->input->post('jenis_barang');
-    //     $id_satuan = $this->input->post('satuan_barang');
-    //     $jumlah_barang                             = $this->input->post('jumlah_barang');
-    //     $kondisi_barang                             = $this->input->post('kondisi_barang');
-    //     $keterangan    = $this->input->post('keterangan');
-
-    //     $data = array(
-    //         'kode'              => $kode,
-    //         'gambar'                      => $gambar,
-    //         'nama_barang'                      => $nama_barang,
-    //         'jenis_barang'                        => $id_jenis,
-    //         'satuan_barang' => $id_satuan,
-    //         'jumlah_barang'                                   => $jumlah_barang,
-    //         'kondisi_barang'                                   => $kondisi_barang,
-    //         'keterangan'      => $keterangan
-    //     );
-    //     $where = array(
-    //         'id'   => $id,
-    //     );
-    //     $this->load->Model('Model_stok');
-    //     $this->Model_stok->update_data($where, $data, 'stok_barang');
-    //     redirect('stok_barang');
-    // }
     function hapus($id)
     {
-        $where = array('id_barang' => $id);
-        $this->Model_stok->hapus_data($where, 'stok_barang');
-        $this->session->set_flashdata('sukses', 'Data barang berhasil dihapus');
-        redirect('stok_barang');
+        if ($this->Model_stok->hapus_data($id) == true) :
+            $this->session->set_flashdata('sukses', 'Data barang berhasil dihapus');
+            redirect('stok_barang');
+        endif;
+        if ($this->Model_stok->hapus_data($id) == false) :
+            $this->session->set_flashdata('gagal', 'Data barang ini digunakan pada tabel lain');
+            redirect('stok_barang');
+        endif;
     }
 }

@@ -30,9 +30,13 @@ class Model_kendaraan extends CI_model
 		$this->db->update($table,$data);
 	}
 
-	function hapus_data($where,$table){
-		$this->db->where($where);
-		$this->db->delete($table);
+	function hapus_data($id){
+		$this->db->delete('data_kendaraan', array("id_kendaraan" => $id));
+		if($this->db->affected_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	// function getList(){
 	// 	return $query = $this->db->order_by('id_jenis', 'ASC')->get('jenis_barang')->result();

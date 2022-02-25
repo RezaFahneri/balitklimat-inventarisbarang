@@ -93,10 +93,14 @@ class Model_stok extends CI_model
 		// return $this->db->query("SELECT * FROM stok_barang WHERE id_barang='$id'")->result();
 	}
 
-	function hapus_data($where, $table)
+	function hapus_data($id)
 	{
-		$this->db->where($where);
-		$this->db->delete($table);
+		$this->db->delete('stok_barang', array("id_barang" => $id));
+		if($this->db->affected_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public function checkAvailability($id)

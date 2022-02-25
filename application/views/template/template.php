@@ -33,7 +33,9 @@
         }
     </style>
     <!-- datatable -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>//DataTables/datatables.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/DataTables/datatables.css">
+    <!-- search select option -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/select2/css/select2.min.css">
 </head>
 
 <body>
@@ -59,7 +61,7 @@
                                     Profil
                                 </a>
                             <?php } ?>
-                            <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/logout">
+                            <a id="logout" class="dropdown-item" href="<?php echo base_url(); ?>dashboard/logout">
                                 <i class="ti ti-logout"></i>
                                 Logout
                             </a>

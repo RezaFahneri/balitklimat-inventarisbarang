@@ -17,15 +17,6 @@ if (flash2) {
     })
 }
 
-var flash5 = $('#flash5').data('flash');
-if (flash5) {
-    Swal.fire({
-        icon: 'error',
-        title: 'Data Barang',
-        text: flash5,
-    })
-}
-
 var flash3 = $('#flash3').data('flash');
 if (flash3) {
     Swal.fire({
@@ -41,6 +32,24 @@ if (flash4) {
         icon: 'error',
         title: 'Error!',
         text: flash4,
+    })
+}
+
+var flash5 = $('#flash5').data('flash');
+if (flash5) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Data Barang',
+        text: flash5,
+    })
+}
+
+var flash6 = $('#flash5').data('flash');
+if (flash6) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Data Kendaraan',
+        text: flash6,
     })
 }
 
@@ -119,6 +128,26 @@ $(document).on('click', '#dipinjamkan1',function (e) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Pinjamkan'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location = href;
+        }
+    })
+})
+
+$(document).on('click', '#logout',function (e) {
+
+    e.preventDefault();
+    var href = $(this).attr('href')
+
+    Swal.fire({
+        title: 'Yakin Logout sistem?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Logout'
     }).then((result) => {
         if (result.isConfirmed) {
             window.location = href;

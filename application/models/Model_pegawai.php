@@ -90,4 +90,10 @@ class Model_pegawai extends CI_model
 		$this->db->join('data_divisi', 'data_pegawai.id_divisi=data_divisi.id_divisi');
 		return $this->db->where('email',$email)->get()->row_array();
 	}
+
+	function tampil_datapenggunaan()
+	{
+		if ($this->db->where('id_jabatan', '5'))
+		return $query = $this->db->get_where('data_pegawai', array('nama_pegawai'))->result();
+	}
 }

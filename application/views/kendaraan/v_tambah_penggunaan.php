@@ -28,7 +28,7 @@
                                         <form method="post" action="<?php echo base_url('penggunaan_mobil/tambah_aksi') ?>" enctype="multipart/form-data"></br>
                                             <div class="form-group">
                                                 <label>Nama Pegawai </label></br>
-                                                <select name="nip" id="nip" class="form-control" required>
+                                                <select name="nip" id="nip" class="js-example-basic-single form-control" required>
                                                     <option value="">--Pilih Nama Pegawai--</option>
                                                     <?php
                                                     foreach ($pegawai as $row) { ?>
@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>No Polisi </label></br>
-                                                <select name="id_kendaraan" id="id_kendaraan" class="form-control" required>
+                                                <select name="id_kendaraan" id="id_kendaraan" class="js-example-basic-single form-control" required>
                                                     <option value="">--Pilih No Polisi--</option>
                                                     <?php
                                                     foreach ($kendaraan as $row) { ?>
