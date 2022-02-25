@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Feb 2022 pada 04.25
+-- Waktu pembuatan: 25 Feb 2022 pada 08.41
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.27
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `balitklimat_db`
+-- Database: `db_projek_reza`
 --
 
 -- --------------------------------------------------------
