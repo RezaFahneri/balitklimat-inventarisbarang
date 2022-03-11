@@ -47,8 +47,8 @@
                                                                 </td>
                                                             <?php } ?>
                                                             <td>
-                                                                <a style="font-size:25px" class="btn btn-sm btn-success" href="<?php echo base_url('/kendaraan/edit/' . $d->id_kendaraan) ?>"><i class="mdi mdi-pencil"></i></a>
-                                                                <a style="font-size:25px" class="btn btn-sm btn-danger" id="tombol-hapus2" href="<?php echo site_url('/kendaraan/hapus/' . $d->id_kendaraan) ?>"><i class="mdi mdi-delete"></i></a>
+                                                                <a data-toggle="tooltip" title="Edit" style="font-size:25px" class="btn btn-sm btn-success" href="<?php echo base_url('/kendaraan/edit/' . $d->id_kendaraan) ?>"><i class="mdi mdi-pencil"></i></a>
+                                                                <a data-toggle="tooltip" title="Hapus" style="font-size:25px" class="btn btn-sm btn-danger" id="tombol-hapus2" href="<?php echo site_url('/kendaraan/hapus/' . $d->id_kendaraan) ?>"><i class="mdi mdi-delete"></i></a>
                                                                 <!-- <a style="font-size:25px" class="btn btn-sm btn-success" href="<?php echo base_url() ?>kendaraan/edit/?id_kendaraan=<?php echo $d->id_kendaraan ?>"><i class="mdi mdi-pencil"></i></a>
                                                                 <a style="font-size:25px" id="tombol-hapus3" class="btn btn-sm btn-danger" href="<?php echo site_url('kendaraan/hapus/' . $d->id_kendaraan) ?>"><i class="mdi mdi-delete"></i></a> -->
                                                             </td>

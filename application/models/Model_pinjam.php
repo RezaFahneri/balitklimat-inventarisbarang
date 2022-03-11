@@ -3,21 +3,21 @@ class Model_pinjam extends CI_model
 {
 	function tampil_data($table)
 	{
-		// $this->db->select('*');
-		// $this->db->join('stok_barang', 'stok_barang.id_barang = pinjam_barang.id_barang');
-		// if ($id_barang != null) {
-		// 	$this->db->where('id_barang', $id_barang);
-		// }
 		return $this->db->get($table);
 	}
 
 	public function getList()
 	{
-		//return $query = $this->db->order_by('id_proyek', 'ASC')->get('proyek')->result();
 		$this->db->select('*');
 		$this->db->from('pinjam_barang');
 		$this->db->join('stok_barang', 'stok_barang.id_barang = pinjam_barang.id_barang');
 		return $this->db->get()->result();
+	}
+
+	function detail_data($id=NULL){
+		$this->db->join('stok_barang', 'stok_barang.id_barang = pinjam_barang.id_barang');
+		$query = $this->db->get_where('pinjam_barang', array('id_pinjam' => $id)) ->row();
+		return $query;
 	}
 
 	function input_data($data,$table){

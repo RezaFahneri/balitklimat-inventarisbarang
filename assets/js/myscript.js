@@ -55,7 +55,7 @@ if (flash6) {
 
 
 //sweetalert2 tombol hapus
-$(document).on('click', '#tombol-hapus1',function (e) {
+$(document).on('click', '#tombol-hapus1', function (e) {
 
     e.preventDefault();
     var href = $(this).attr('href')
@@ -70,12 +70,12 @@ $(document).on('click', '#tombol-hapus1',function (e) {
         confirmButtonText: 'Hapus data'
     }).then((result) => {
         if (result.isConfirmed) {
-                window.location = href
+            window.location = href
         }
     })
 })
 
-$(document).on('click', '#tombol-hapus2',function (e) {
+$(document).on('click', '#tombol-hapus2', function (e) {
 
     e.preventDefault();
     var href = $(this).attr('href')
@@ -95,7 +95,7 @@ $(document).on('click', '#tombol-hapus2',function (e) {
     })
 })
 
-$(document).on('click', '#tombol-hapus3',function (e) {
+$(document).on('click', '#tombol-hapus3', function (e) {
 
     e.preventDefault();
     var href = $(this).attr('href')
@@ -115,7 +115,7 @@ $(document).on('click', '#tombol-hapus3',function (e) {
     })
 })
 
-$(document).on('click', '#dipinjamkan1',function (e) {
+$(document).on('click', '#dipinjamkan1', function (e) {
 
     e.preventDefault();
     var href = $(this).attr('href')
@@ -135,7 +135,7 @@ $(document).on('click', '#dipinjamkan1',function (e) {
     })
 })
 
-$(document).on('click', '#logout',function (e) {
+$(document).on('click', '#logout', function (e) {
 
     e.preventDefault();
     var href = $(this).attr('href')
@@ -154,3 +154,84 @@ $(document).on('click', '#logout',function (e) {
         }
     })
 })
+
+//filter statistik penggunaan mobil
+filterSelection("semua")
+
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filterDiv");
+    if (c == " ") c = "";
+    for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+}
+
+function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+            element.className += " " + arr2[i];
+        }
+    }
+}
+
+function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+    }
+    element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn-filter");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " ";
+    });
+}
+
+// tooltip
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+//lama pemakaian penggunaan mobil sehari
+$('#replybutton').click(function () {
+    $('#reply').show()
+})
+
+function toggleText() {
+    var x = document.getElementById("Myid");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function ShowHideDiv(btnPassport) {
+    var dvPassport = document.getElementById("dvPassport");
+    dvPassport.style.display = btnPassport.value == "Ya" ? "block" : "none";
+}
+
+function showperjalanan() {
+    var status = document.getElementById("statusperjalanan");
+    if(status.value == "Dalam Kota") {
+        document.getElementById("lama_pakai").style.visibility="visible";
+    }
+    else {
+        document.getElementById("lama_pakai").style.visibility="hidden";
+    }
+}

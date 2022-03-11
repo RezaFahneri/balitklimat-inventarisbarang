@@ -23,10 +23,10 @@
                                                         <!-- <th>Kode</th> -->
                                                         <th>Gambar</th>
                                                         <th>Nama Barang</th>
-                                                        <th>Jenis Barang</th>
+                                                        <!-- <th>Jenis Barang</th> -->
                                                         <th>Jumlah Barang</th>
                                                         <th>Satuan Barang</th>
-                                                        <th>Kondisi Barang</th>
+                                                        <!-- <th>Kondisi Barang</th> -->
                                                         <!-- <th>Keterangan</th> -->
                                                         <th>Aksi</th>
                                                     </tr>
@@ -41,17 +41,16 @@
                                                             <!-- <td><?php echo $dp->kode ?></td> -->
                                                             <td>
                                                                 <img class="zoomable img-lg" src="<?php echo base_url() . 'assets/images/upload/' . $dp->gambar ?>" style="height:40px;">
-                                                            <td><?php echo $dp->nama_barang ?></td>
-                                                            <td><?php echo $dp->jenis_barang ?></td>
+                                                            <td><?php echo character_limiter($dp->nama_barang, 35) ?></td>
+                                                            <!-- <td><?php echo $dp->jenis_barang ?></td> -->
                                                             <td><?php echo $dp->jumlah_barang ?></td>
                                                             <td><?php echo $dp->satuan_barang ?></td>
-                                                            <td><?php echo $dp->kondisi_barang ?></td>
+                                                            <!-- <td><?php echo $dp->kondisi_barang ?></td> -->
                                                             <!-- <td><?php echo $dp->keterangan ?></td> -->
                                                             <td>
-                                                                <!-- <a class="btn btn-sm btn-info" href="<?php echo base_url('data_stok/detail/' . $dp->id_barang) ?>"><i class="ti ti-info-circle"></i></a> -->
-                                                                <a style="font-size:25px" class="btn btn-md btn-success" href="<?php echo base_url() ?>stok_barang/edit?id_barang=<?php echo $dp->id_barang ?>"><i class="mdi mdi-pencil"></i></a>
-                                                                <!-- <a style="height:23px" type="button" class="btn btn btn-success" href="<?php echo base_url('stok_barang/edit/' . $dp->id_barang) ?> "?><i class="ti ti-pencil"></i></a> -->
-                                                                <a style="font-size:25px" id="tombol-hapus3" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="mdi mdi-delete"></i></a>
+                                                                <a data-toggle="tooltip" title="Detail" style="font-size:25px" class="btn btn-sm btn-info" href="<?php echo base_url('/stok_barang/detail/' . $dp->id_barang) ?>"><i class="mdi mdi-information-outline"></i></a>
+                                                                <a data-toggle="tooltip" title="Edit" style="font-size:25px" class="btn btn-md btn-success" href="<?php echo base_url() ?>stok_barang/edit?id_barang=<?php echo $dp->id_barang ?>"><i class="mdi mdi-pencil"></i></a>
+                                                                <a data-toggle="tooltip" title="Hapus" style="font-size:25px" id="tombol-hapus3" class="btn btn-sm btn-danger" href="<?php echo site_url('stok_barang/hapus/' . $dp->id_barang) ?>"><i class="mdi mdi-delete"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

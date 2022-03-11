@@ -24,6 +24,15 @@ class Stok_barang extends CI_Controller
         $this->load->view('template/footer', $data);
     }
 
+    public function detail($id)
+    {
+        $data['title'] = "Detail Stok Barang | Balitklimat";
+        $data['detail'] = $this->Model_stok->detail_data($id);
+        $this->load->view('template/template', $data);
+        $this->load->view('stok/v_detail_stok', $data);
+        $this->load->view('template/footer');
+    }
+
     function tambah()
     {
         $data['title'] = 'Tambah Stok Barang | Balitklimat';

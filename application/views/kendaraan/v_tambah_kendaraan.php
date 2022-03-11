@@ -4,6 +4,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
+                        <a style="font-size:40px; color:#000000" href="<?php echo base_url() ?>kendaraan"><i class="mdi mdi-keyboard-backspace"></i></a>
                         <h3 class="m-0 font-weight-bold">Tambah Data Kendaraan</h3><br>
                         <div class="col-md-12 grid-margin">
                             <div class="card-body">

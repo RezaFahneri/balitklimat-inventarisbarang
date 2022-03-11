@@ -52,15 +52,17 @@
                     </div>&nbsp;&nbsp;
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="<?php echo base_url() ?>assets/images/foto/<?php echo $this->db->where('email', $this->session->userdata('email'))->get('data_pegawai')->row('foto') ?>" alt="profile" />
+                            <?php if ($this->session->userdata('logged_in') == true) { ?>
+                                <img src="<?php echo base_url() ?>assets/images/upload/<?php echo $this->db->where('email', $this->session->userdata('email'))->get('data_pegawai')->row('foto') ?>" class="img-circle profile_img" alt="profile" />
+                            <?php } else { ?>
+                                <img src="<?php echo base_url() ?>assets/images/upload/default.png" class="img-circle profile_img" alt="profile" />
+                            <?php } ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <?php if ($this->session->userdata('id_jabatan') == 1 || $this->session->userdata('id_jabatan') == 2 || $this->session->userdata('id_jabatan') == 3 || $this->session->userdata('id_jabatan') == 4) { ?>
-                                <a href="<?php echo base_url() ?>profil" class="dropdown-item">
-                                    <i class="mdi mdi-account text-primary"></i>
-                                    Profil
-                                </a>
-                            <?php } ?>
+                            <a href="<?php echo base_url() ?>profil" class="dropdown-item">
+                                <i class="mdi mdi-account"></i>
+                                Profil
+                            </a>
                             <a id="logout" class="dropdown-item" href="<?php echo base_url(); ?>dashboard/logout">
                                 <i class="ti ti-logout"></i>
                                 Logout

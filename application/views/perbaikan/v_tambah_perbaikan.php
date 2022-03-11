@@ -4,8 +4,9 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
+                        <a style="font-size:40px; color:#000000" href="<?php echo base_url() ?>perbaikan_barang"><i class="mdi mdi-keyboard-backspace"></i></a>
                         <h3 class="m-0 font-weight-bold">Tambah Perbaikan Barang</h3><br>
-                        <div class="flash-data" id="flash" data-flash="<?= $this->session->flashdata('pesan');?>"></div>
+                        <div class="flash-data" id="flash" data-flash="<?= $this->session->flashdata('pesan'); ?>"></div>
                         <div class="col-md-12 grid-margin">
                             <div class="card shadow mb-12">
                                 <div class="col-lg-12 grid-margin stretch-card">
@@ -16,7 +17,7 @@
                                                 <select name="id_barang" id="id_barang" class="js-example-basic-single form-control" required>
                                                     <option value="">--Pilih Nama Barang--</option>
                                                     <?php
-                                                    foreach ($barang as $row) { ?>                                   
+                                                    foreach ($barang as $row) { ?>
                                                         <option value="<?php echo $row->id_barang; ?>"><?php echo $row->nama_barang; ?></option>';
                                                         }
                                                     <?php } ?>
@@ -71,11 +72,3 @@
     </div>
 </div>
 </div>
-
-<!-- <script>
-        <head>
-        <?php foreach($head as $headItem): ?> 
-        <?php echo $headItem."\n"; ?>
-        <?php endforeach; ?>
-        </head>
-</script> -->

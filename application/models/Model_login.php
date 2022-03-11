@@ -36,7 +36,8 @@ class Model_login extends CI_model
                 'email'    => $query->row()->email,
                 'password'    => $query->row()->password,
                 'logged_in'    => true,
-                'id_jabatan' => $query->row()->id_jabatan
+                'id_jabatan' => $query->row()->id_jabatan,
+                'role' => $query->row()->role
             );
 
             $this->session->set_userdata($data);

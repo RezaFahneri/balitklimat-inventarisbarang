@@ -26,6 +26,15 @@ class Pinjam_barang extends CI_Controller
         $this->load->view('template/footer', $data);
     }
 
+    public function detail($id)
+    {
+        $data['title'] = "Detail Peminjaman Barang | Balitklimat";
+        $data['detail'] = $this->Model_pinjam->detail_data($id);
+        $this->load->view('template/template', $data);
+        $this->load->view('peminjaman/v_detail_pinjam', $data);
+        $this->load->view('template/footer');
+    }
+
     function pinjam()
     {
         $data['title'] = 'Pinjam Barang | Balitklimat';

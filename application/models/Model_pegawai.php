@@ -93,7 +93,9 @@ class Model_pegawai extends CI_model
 
 	function tampil_datapenggunaan()
 	{
-		if ($this->db->where('id_jabatan', '5'))
-		return $query = $this->db->get_where('data_pegawai', array('nama_pegawai'))->result();
+		if ($this->db->where('id_jabatan', '5') && $this->db->where('status_perjalanan !=', '1'))
+		return $query = $this->db->get_where('status_perjalanan', array('nama_pegawai'))->result();
+		// if ($this->db->where('id_jabatan', '5') && $this->db->where('status_perjalanan !=', '1'))
+		// return $query = $this->db->get_where('status_perjalanan', array('nama_pegawai'))->result();
 	}
 }

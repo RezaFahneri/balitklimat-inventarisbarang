@@ -4,6 +4,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="shadow">
                     <div class="card-header py-3">
+                        <a style="font-size:40px; color:#000000" href="<?php echo base_url() ?>kendaraan"><i class="mdi mdi-keyboard-backspace"></i></a>
                         <h3 class="m-0 font-weight-bold">Edit Data Kendaraan</h3><br>
                         <div class="flash-data" id="flash5" data-flash="<?= $this->session->flashdata('gagal'); ?>"></div>
                         <div class="col-md-12 grid-margin">

@@ -18,9 +18,18 @@ class Riwayat_peminjaman extends CI_Controller
     function index()
     {
         $data['data_riwayat'] = $this->Model_riwayat->getList();
-        $data['title'] = "Peminjaman Barang | Balitklimat";
+        $data['title'] = "Riwayat Peminjaman Barang | Balitklimat";
         $this->load->view('template/template', $data);
         $this->load->view('peminjaman/v_riwayat_peminjaman', $data);
         $this->load->view('template/footer', $data);
+    }
+
+    public function detail($id)
+    {
+        $data['title'] = "Detail Riwayat Peminjaman Barang | Balitklimat";
+        $data['detail'] = $this->Model_riwayat->detail_data($id);
+        $this->load->view('template/template', $data);
+        $this->load->view('peminjaman/v_detail_riwayat', $data);
+        $this->load->view('template/footer');
     }
 }

@@ -19717,6 +19717,7 @@ code {
   margin-left: 235px;
   font-weight: 400;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
+  width: 3000px;
 }
 
 .footer a {
@@ -30722,4 +30723,43 @@ bottom: .5em;
   display: none;
   position:absolute
 }
+
+/* filter-penggunaanmobil */
+.filterDiv {
+  float: left;
+  color: #000000;
+  line-height: 100px;
+  text-align: left;
+  margin: 15px 30px;
+  display: none;
+  border-radius: 0.1875rem;
+}
+
+.show {
+  display: block;
+}
+
+.container-filter {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* Style the buttons */
+.btn-filter {
+  border: #ddd;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.btn-filter:hover {
+  background-color: #ddd;
+}
+
+.btn-filter.active {
+  background-color:#ddd;
+  color: #f1f1f1;
+}
+
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

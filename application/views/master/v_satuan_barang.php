@@ -32,8 +32,8 @@
                                                             <td><?php echo $no++ ?></td>
                                                             <td><?php echo $j->satuan_barang ?></td>
                                                             <td>
-                                                                <a class="btn btn-sm btn-success" href="<?php echo base_url('/satuan_barang/edit/' . $j->id_satuan) ?>"><i class="mdi mdi-pencil"></i></a>
-                                                                <a class="btn btn-sm btn-danger" id="tombol-hapus1" href="<?php echo site_url('/satuan_barang/hapus/' . $j->id_satuan) ?>"><i class="mdi mdi-delete"></i></a>
+                                                                <a data-toggle="tooltip" title="Edit" class="btn btn-sm btn-success" href="<?php echo base_url('/satuan_barang/edit/' . $j->id_satuan) ?>"><i class="mdi mdi-pencil"></i></a>
+                                                                <a data-toggle="tooltip" title="Hapus" class="btn btn-sm btn-danger" id="tombol-hapus1" href="<?php echo site_url('/satuan_barang/hapus/' . $j->id_satuan) ?>"><i class="mdi mdi-delete"></i></a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

@@ -15,14 +15,15 @@
                                     <div class="card">
                                         <!-- <div class="card-body"> -->
                                         <div class="table-responsive pt-4">
-                                            <table  id="dtBasicExample" class="table table-bordered" cellspacing="0" width="150%">
+                                            <table id="dtBasicExample" class="table table-bordered" cellspacing="0" width="150%">
                                                 <thead style='height:auto' class="thead-light">
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Nama Pengguna</th>
                                                         <th>No Polisi</th>
                                                         <th>Tanggal Pemakaian</th>
-                                                        <th>Lama Pemakaian(Jam)</th>
+                                                        <th>Tanggal Kembali</th>
+                                                        <th>Lama Pemakaian</th>
                                                         <th>Perjalanan</th>
                                                         <th>Status</th>
                                                     </tr>
@@ -37,13 +38,18 @@
                                                             <td><?php echo $dp->nama_pegawai ?></td>
                                                             <td><?php echo $dp->no_polisi ?></td>
                                                             <td><?php echo tanggal_indonesia($dp->tgl_pemakaian) ?></td>
-                                                            <td><?php echo $dp->lama_pemakaian ?></td>
+                                                            <td><?php echo tanggal_indonesia($dp->tgl_kembali) ?></td>
+                                                            <?php if ($dp->lama_pemakaian == null) { ?>
+                                                                <td><?php echo "> 24 Jam" ?></td>
+                                                            <?php } else { ?>
+                                                                <td><?php echo $dp->lama_pemakaian . " Jam" ?></td>
+                                                            <?php } ?>
                                                             <td><?php echo $dp->perjalanan ?></td>
                                                             <?php if ($dp->status_penggunaan == '1') { ?>
                                                                 <td>
-                                                                    <button  class="btn btn-outline-warning btn-md" disabled>Digunakan</button>
+                                                                    <button class="btn btn-outline-warning btn-md" disabled>Digunakan</button>
                                                                     <hr style="width:80%;text-align:left;margin-left:0">
-                                                                    <a type="button" class="btn btn-outline-info btn-md" href="<?php echo base_url('penggunaan_mobil/selesai/'.$dp->id_penggunaan).'/'.$dp->id_kendaraan ?>">Selesai</a>
+                                                                    <a type="button" class="btn btn-outline-info btn-md" href="<?php echo base_url('penggunaan_mobil/selesai/' . $dp->id_penggunaan) . '/' . $dp->id_kendaraan . '/' . $dp->nip ?>">Selesai</a>
                                                                 </td>
                                                             <?php } else { ?>
                                                                 <td>

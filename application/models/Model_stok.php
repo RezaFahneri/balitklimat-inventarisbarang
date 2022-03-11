@@ -20,6 +20,10 @@ class Model_stok extends CI_model
 	// 	return $query = $this->db->where('pumk', 'Iya')->order_by('nip', 'ASC')->get('data_pegawai')->result();
 	// }
 
+	function detail_data($id=NULL){
+		$query = $this->db->get_where('stok_barang', array('id_barang' => $id)) ->row();
+		return $query;
+	}
 
 	function input_data($dokumen)
 	{

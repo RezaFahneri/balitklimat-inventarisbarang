@@ -15,6 +15,12 @@ class Model_riwayat extends CI_model
 		return $this->db->get()->result();
 	}
 
+	function detail_data($id=NULL){
+		$this->db->join('stok_barang', 'stok_barang.id_barang = riwayat_peminjaman.id_barang');
+		$query = $this->db->get_where('riwayat_peminjaman', array('id_riwayat' => $id)) ->row();
+		return $query;
+	}
+
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}

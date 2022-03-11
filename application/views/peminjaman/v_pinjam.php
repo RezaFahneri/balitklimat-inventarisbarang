@@ -24,9 +24,10 @@
                                                         <th>Tanggal Pinjam</th>
                                                         <th>Tanggal Selesai</th>
                                                         <th>Jumlah</th>
-                                                        <th>Kegiatan</th>
-                                                        <th>Lokasi</th>
+                                                        <!-- <th>Kegiatan</th> -->
+                                                        <!-- <th>Lokasi</th> -->
                                                         <th>Status</th>
+                                                        <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -36,13 +37,13 @@
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $no++ ?></td>
-                                                            <td><?php echo $dp->nama_barang ?></td>
+                                                            <td><?php echo character_limiter($dp->nama_barang,20) ?></td>
                                                             <td><?php echo $dp->peminjam ?></td>
                                                             <td><?php echo tanggal_indonesia($dp->tglpinjam) ?></td>
                                                             <td><?php echo tanggal_indonesia($dp->tglselesai) ?></td>
                                                             <td><?php echo $dp->qty ?></td>
-                                                            <td><?php echo $dp->kegiatan ?></td>
-                                                            <td><?php echo $dp->lokasi ?></td>
+                                                            <!-- <td><?php echo $dp->kegiatan ?></td> -->
+                                                            <!-- <td><?php echo $dp->lokasi ?></td> -->
                                                             <?php if ($dp->status == '1') { ?>
                                                                 <td>
                                                                     <a id="dipinjamkan1" class="btn btn-outline-warning btn-md" href="<?php echo site_url('pinjam_barang/dipinjamkan/' . $dp->id_pinjam) ?>">Menunggu Verifikasi</a>
@@ -51,9 +52,12 @@
                                                                 <td height="40px">
                                                                     <button type="button" class="btn btn-outline-success" disabled>Dipinjam</button>
                                                                     <hr style="width:60%;text-align:left;margin-left:0">
-                                                                    <a type="button" class="btn btn-outline-info btn-md" href="<?php echo base_url('pinjam_barang/selesai/'.$dp->id_pinjam).'/'.$dp->id_barang ?>">Selesai</a>
-                                                                </tdstyle=>
+                                                                    <a type="button" class="btn btn-outline-info btn-md" href="<?php echo base_url('pinjam_barang/selesai/' . $dp->id_pinjam) . '/' . $dp->id_barang ?>">Selesai</a>
+                                                                </td>
                                                             <?php } ?>
+                                                            <td>
+                                                                <a data-toggle="tooltip" title="Detail" style="font-size:25px" class="btn btn-sm btn-info" href="<?php echo base_url('/pinjam_barang/detail/' . $dp->id_pinjam) ?>"><i class="mdi mdi-information-outline"></i></a>
+                                                            </td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>
